@@ -1,0 +1,23 @@
+.checkout-page {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  // CSS GRID
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 2rem auto 3rem;
+
+  &__head {
+    margin: 0 auto;
+    grid-row: 1 / -4;
+  }
+
+  &__total {
+    font-size: 36px;
+    grid-column: 1 / 6;
+    grid-row: 3 / -2;
+    margin-left: auto;
+  }
+}
+
+

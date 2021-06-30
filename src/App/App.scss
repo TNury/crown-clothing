@@ -1,0 +1,69 @@
+// ASSETS
+@import './Assets/normalize/normalize.scss'; // NORMALIZE
+
+@font-face {
+  font-family: 'OpenSansCondensed';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./Assets/font/OpenSansCondensed-Light.ttf') format('truetype');
+} // OPEN SANS CONDENSED NORMAL
+
+@font-face {
+  font-family: 'OpenSansCondensed';
+  font-style: italic;
+  font-weight: normal;
+  src: url('./Assets/font/OpenSansCondensed-LightItalic.ttf') format('truetype');
+} // OPEN SANS CONDENSED ITALIC
+
+@font-face {
+  font-family: 'OpenSansCondensed';
+  font-style: normal;
+  font-weight: bold;
+  src: url('./Assets/font/OpenSansCondensed-Bold.ttf') format('truetype');
+} // OPEN SANS CONDENSED BOLD
+
+// HOME PAGE
+@import './Components/page-components/home/home.scss'; // PAGE
+@import './Components/page-components/home/directory-menu/directory-menu.scss'; // DIRECTORY MENU
+@import './Components/page-components/home/directory-menu/menu-item/menu-item.scss'; // MENU ITEM
+
+// SHOP PAGE
+@import './Components/page-components/shop/inventory-preview/inventory-preview.scss'; // INVENTORY PREVIEW
+@import './Components/page-components/shop/inventory-preview/inventory-item/inventory-item.scss'; // INVENTORY ITEM
+
+// CHECKOUT PAGE
+@import './Components/page-components/checkout/checkout-page.scss'; // PAGE
+@import './Components/page-components/checkout/checkout-item/checkout-item.scss';
+
+// AUTH PAGE
+@import './Components/page-components/auth/auth.scss'; // PAGE
+@import './Components/page-components/auth/sign-in/sign-in.scss'; // SIGN IN
+@import './Components/page-components/auth/sign-up/sign-up.scss'; // SIGN UP
+
+// REUSABLE COMPONENTS 
+@import './Components/reusable-components/header/header.scss'; // HEADER
+@import './Components/reusable-components/header/cart-icon/cart-icon.scss'; // HEADER ICON
+@import './Components/reusable-components/header/cart-dropdown/cart-dropdown.scss'; // HEADER DROPDOWN
+@import './Components/reusable-components/form-input/form-input.scss'; // FORM INPUT
+@import './Components/reusable-components/button/button.scss'; // BUTTON
+@import './Components/reusable-components/cart-item/cart-item.scss'; //CART ITEM
+
+// DEFAULT STYLES
+
+:root {
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'OpenSansCondensed';
+  padding: 1.5rem 3.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}

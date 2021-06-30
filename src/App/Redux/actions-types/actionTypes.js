@@ -1,0 +1,8 @@
+// USER ACTIONS
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+
+// CART ACTIONS
+export const TOGGLE_DROPDOWN = 'TOGGLE_DROPDOWN';
+export const ADD_ITEM = 'ADD_ITEM';
+export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const DELETE_ITEM = 'DELETE_ITEM';
