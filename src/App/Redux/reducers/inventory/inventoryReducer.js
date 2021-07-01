@@ -1,4 +1,4 @@
-import { SHOP_INVENTORY } from './inventory.js';
+import { SHOP_INVENTORY } from './data/shop-inventory.js';
 
 const INITIAL_STORE = {
   inventory: SHOP_INVENTORY

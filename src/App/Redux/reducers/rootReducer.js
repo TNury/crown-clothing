@@ -7,10 +7,7 @@ import storage from 'redux-persist/lib/storage';
 import { user } from './user/userReducer.js';
 import { cart } from './cart/cartReducer.js';
 import { directory } from './directory/directoryReducer.js';
-<<<<<<< HEAD
-=======
 import { inventory } from './inventory/inventoryReducer.js';
->>>>>>> shop-data
 
 /*
 ============================================================
@@ -33,22 +30,14 @@ import { inventory } from './inventory/inventoryReducer.js';
 const persistConfig = {
   key: 'root',
   storage,
-<<<<<<< HEAD
-  whitelist: ['cartReducer']
-=======
   whitelist: ['cartReducer', 'directoryReducer', 'inventoryReducer']
->>>>>>> shop-data
 };
 
 const rootReducer = combineReducers({
   userReducer: user,
   cartReducer: cart,
-<<<<<<< HEAD
-  directoryReducer: directory
-=======
   directoryReducer: directory,
   inventoryReducer: inventory
->>>>>>> shop-data
 });
 
 export default persistReducer(persistConfig, rootReducer);
