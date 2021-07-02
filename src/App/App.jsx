@@ -10,7 +10,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { auth, createUserProfileDocument } from './Firebase/firebase.js';
 // PAGE COMPONENTS
 import { HomePage } from './Components/page-components/home/home.jsx';
-import ShopPage from './Components/page-components/shop/shop.jsx';
+import { ShopPage } from './Components/page-components/shop/shop.jsx';
 import CheckoutPage from './Components/page-components/checkout/checkout-page.jsx';
 import { AuthPage } from './Components/page-components/auth/auth.jsx';
 // REUSABLE COMPONENTS

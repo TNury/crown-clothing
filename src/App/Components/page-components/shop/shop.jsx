@@ -1,26 +1,12 @@
-// REACT
-import React from 'react';
-// REDUX
-import { connect } from 'react-redux';
-import { inventoryItemSelector } from '../../../Redux/reducers/inventory/selectors/inventorySelectors.js';
 // COMPONENTS
-import { InventoryPreview } from './inventory-preview/inventory-preview.jsx';
+import InventoryOverview from './inventory-overview/inventory-overview.jsx';
 
-const ShopPage = ({ reduxProps: { inventoryItemProps } }) => {
+export const ShopPage = () => {
 
   return (
     <div className="shop-page">
-      {inventoryItemProps.map(({ id, ...restOfProps }) => (
-        <InventoryPreview key={id} {...restOfProps} />
-      ))}
+      <InventoryOverview />
     </div>
   );
 };
 
-const mapStoreToProps = (currentStore) => ({
-  reduxProps: {
-    inventoryItemProps: inventoryItemSelector(currentStore)
-  }
-});
-
-export default connect(mapStoreToProps)(ShopPage);

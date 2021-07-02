@@ -1,8 +1,8 @@
 // REDUX
 import { connect } from 'react-redux';
-import { addItem } from '../../../../../Redux/reducers/cart/actions/cartActions.js';
+import { addItem } from '../../../../../../Redux/reducers/cart/actions/cartActions.js';
 // REUSABLE COMPONENTS
-import { Button } from '../../../../reusable-components/button/button.jsx';
+import { Button } from '../../../../../reusable-components/button/button.jsx';
 
 export const InventoryItem = ({ drilledProps, dispatch }) => {
 
