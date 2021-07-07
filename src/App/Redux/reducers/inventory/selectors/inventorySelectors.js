@@ -1,5 +1,7 @@
 // RESELECT
 import { createSelector } from 'reselect';
+// LODASH MEMOIZER
+import memoize from 'lodash.memoize';
 
 // INVENTORY ID MAP
 const INVENTORY_ID_MAP = {
@@ -20,9 +22,9 @@ export const inventoryItemSelector = createSelector(
 );
 
 // CATEGORY SELECTOR
-export const categorySelector = (categoryId) => (
+export const categorySelector = memoize((categoryId) => (
   createSelector(
     inventoryItemSelector,
     (inventory) => inventory.find(categories => categories.id === INVENTORY_ID_MAP[categoryId])
   )
-);
+));
