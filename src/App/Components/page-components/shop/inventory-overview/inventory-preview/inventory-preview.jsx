@@ -1,5 +1,5 @@
 // COMPONENTS
-import InventoryItem from './inventory-item/inventory-item.jsx';
+import InventoryItem from '../../../../reusable-components/inventory-item/inventory-item.jsx';
 
 export const InventoryPreview = ({ title, items }) => {
   
