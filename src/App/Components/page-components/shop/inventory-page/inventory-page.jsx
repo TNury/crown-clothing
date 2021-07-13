@@ -7,11 +7,22 @@ import { InventoryItem } from '../../../reusable-components/inventory-item/inven
 
 const InventoryPage = ({ reduxProps: { categoryProps }, match }) => {
 
-  console.log(categoryProps)
-  
+  const { title: category, items } = categoryProps;
+
   return (
     <div className="collection-page">
-      <h2>INVENTORY PAGE</h2>
+      <h2 className="title">{category}</h2>
+      <div className="items">
+        {
+          items.map(({id, name, price, imageUrl}) => (
+            <InventoryItem key={id} drilledProps={{
+              name,
+              price,
+              imageUrl
+            }}/>
+          ))
+        }
+      </div>
     </div>
   );
 };

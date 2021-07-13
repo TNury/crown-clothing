@@ -8,6 +8,9 @@ export const InventoryItem = ({ drilledProps, dispatch }) => {
 
   const { name, price, imageUrl } = drilledProps;
 
+  console.log(drilledProps);
+
+
   return (
     <div className="collection-item">
       <div
