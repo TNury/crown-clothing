@@ -19,9 +19,9 @@ export const inventoryPreviewSelector = createSelector(
 );
 
 // CATEGORY SELECTOR
-export const categorySelector = (categoryId) => (
+export const categorySelector = memoize((categoryId) => (
   createSelector(
     inventoryItemSelector,
     (inventory) => inventory[categoryId]
   )
-);
+));

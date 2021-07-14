@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { categorySelector } from '../../../../Redux/reducers/inventory/selectors/inventorySelectors.js';
 
 // COMPONENTS
-import { InventoryItem } from '../../../reusable-components/inventory-item/inventory-item.jsx';
+import InventoryItem from '../../../reusable-components/inventory-item/inventory-item.jsx';
 
 // This is technically the Category page
 const InventoryPage = ({ reduxProps: { categoryProps } }) => {
@@ -15,12 +15,8 @@ const InventoryPage = ({ reduxProps: { categoryProps } }) => {
       <h2 className="title">{category}</h2>
       <div className="items">
         {
-          items.map(({id, name, price, imageUrl}) => (
-            <InventoryItem key={id} drilledProps={{
-              name,
-              price,
-              imageUrl
-            }}/>
+          items.map((item) => (
+            <InventoryItem key={item.id} drilledProps={item}/>
           ))
         }
       </div>
