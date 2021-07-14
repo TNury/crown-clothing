@@ -4,7 +4,7 @@ import { addItem } from '../../../Redux/reducers/cart/actions/cartActions.js';
 // REUSABLE COMPONENTS
 import { Button } from '../button/button.jsx';
 
-export const InventoryItem = ({ drilledProps, dispatch }) => {
+const InventoryItem = ({ drilledProps, dispatch }) => {
 
   const { name, price, imageUrl } = drilledProps;
 

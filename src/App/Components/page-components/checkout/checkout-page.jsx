@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { cartItemsSelector, cartTotalSelector } from '../../../Redux/reducers/cart/selectors/cartSelectors.js';
 // COMPONENTS
 import CheckOutItem from './checkout-item/checkout-item.jsx';
+import { StripeCheckoutButton } from './stripe-button/stripe-button.jsx';
 
-const CheckoutPage = ({ reduxProps: { cartItemsProps, cartTotalProp }, dispatch }) => {
+const CheckoutPage = ({ reduxProps: { cartItemsProps, cartTotalProp } }) => {
   
   return (
     <div className="checkout-page">
@@ -24,6 +25,12 @@ const CheckoutPage = ({ reduxProps: { cartItemsProps, cartTotalProp }, dispatch 
         ))}
       </div>
       <span className="checkout-page__total">TOTAL: ${cartTotalProp}</span>
+      <div className="test-warning">
+        *Please use the following test credit card for payments*
+        <br />
+        4242 4242 4242 4242 - Exp: 01/22 - CVV:123
+      </div>
+      <StripeCheckoutButton className="test" cartTotalProp={cartTotalProp} />
     </div>
   );
 };

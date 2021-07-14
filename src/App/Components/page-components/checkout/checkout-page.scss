@@ -18,6 +18,21 @@
     grid-row: 3 / -2;
     margin-left: auto;
   }
+
+  .StripeCheckout {
+    grid-column: 1 / 2;
+    grid-row: 3 / -2;
+    background: none !important;
+    border: none !important;
+  }
+
+  .test-warning {
+    text-align: center;
+    grid-column: 1 / 6;
+    grid-row: 4 / -1;
+    font-size: 24px;
+    color: red;
+  }
 }
 
 
