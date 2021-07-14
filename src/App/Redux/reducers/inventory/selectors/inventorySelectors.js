@@ -3,15 +3,6 @@ import { createSelector } from 'reselect';
 // LODASH MEMOIZER
 import memoize from 'lodash.memoize';
 
-// INVENTORY ID MAP
-const INVENTORY_ID_MAP = {
-  hats: 1,
-  sneakers: 2,
-  jackets: 3,
-  womens: 4,
-  mens: 5
-}
-
 // INVENTORY REDUCER SELECTOR
 const inventorySelector = (currentStore) => currentStore.inventoryReducer;
 
@@ -21,10 +12,16 @@ export const inventoryItemSelector = createSelector(
   (inventoryReducer) => inventoryReducer.inventory
 );
 
+// 
+export const inventoryPreviewSelector = createSelector(
+  inventoryItemSelector,
+  (inventory) => Object.keys(inventory).map((key) => inventory[key])
+);
+
 // CATEGORY SELECTOR
-export const categorySelector = memoize((categoryId) => (
+export const categorySelector = (categoryId) => (
   createSelector(
     inventoryItemSelector,
-    (inventory) => inventory.find(categories => categories.id === INVENTORY_ID_MAP[categoryId])
+    (inventory) => inventory[categoryId]
   )
-));
+);

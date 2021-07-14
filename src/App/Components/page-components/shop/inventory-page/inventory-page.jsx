@@ -5,7 +5,8 @@ import { categorySelector } from '../../../../Redux/reducers/inventory/selectors
 // COMPONENTS
 import { InventoryItem } from '../../../reusable-components/inventory-item/inventory-item.jsx';
 
-const InventoryPage = ({ reduxProps: { categoryProps }, match }) => {
+// This is technically the Category page
+const InventoryPage = ({ reduxProps: { categoryProps } }) => {
 
   const { title: category, items } = categoryProps;
 

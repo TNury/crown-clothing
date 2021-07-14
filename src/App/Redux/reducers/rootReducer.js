@@ -30,7 +30,7 @@ import { inventory } from './inventory/inventoryReducer.js';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cartReducer', 'directoryReducer', 'inventoryReducer']
+  whitelist: ['cartReducer']
 };
 
 const rootReducer = combineReducers({
