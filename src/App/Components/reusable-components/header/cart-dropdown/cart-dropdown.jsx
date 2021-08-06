@@ -7,14 +7,22 @@ import { withRouter } from 'react-router';
 // REUSABLE COMPONENTS
 import { CartItem } from '../../cart-item/cart-item.jsx';
 import { Button } from '../../button/button.jsx';
+// STYLES
+import { cartDropdownStyles } from './cart-dropdown.styles.js';
 
 export const CartDropdown = ({ reduxProps, history, dispatch }) => {
 
   const { cartItemsProps } = reduxProps;
+  const { 
+    cartDropdown, 
+    cartItems, 
+    emptyMessage, 
+    _dropDown 
+  } = cartDropdownStyles();
   
   return (
-    <div className="cart-dropdown">
-      <div className="cart-items">
+    <div className={cartDropdown}>
+      <div className={cartItems}>
         {
           cartItemsProps.length > 0
           ?
@@ -27,7 +35,7 @@ export const CartDropdown = ({ reduxProps, history, dispatch }) => {
             />
           ))
           :
-          <span className="empty-message">Your cart is empty.</span>
+          <span className={emptyMessage}>Your cart is empty.</span>
         }
       </div>
       <Button
@@ -35,7 +43,7 @@ export const CartDropdown = ({ reduxProps, history, dispatch }) => {
           history.push('/checkout')
           dispatch(toggleDropdown());
         }}
-        styles="_dropdown"
+        styles={_dropDown}
         type="button"
         text="GO TO CHECKOUT"
       />
