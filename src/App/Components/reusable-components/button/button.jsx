@@ -1,10 +1,16 @@
+// STYLES
+import { buttonStyles } from './button.styles.js';
 
-
-export const Button = ({ handler, modifier, type, text }) => {
+export const Button = ({ handler, styles, type, text }) => {
+  const { customButton } = buttonStyles();
 
   return (
-    <button onClick={handler} type={type} className={`custom-button ${modifier}`} >
+    <button
+      onClick={handler}
+      type={type}
+      className={`${customButton} ${styles}`}
+    >
       {text}
     </button>
-  )
-}
+  );
+};
