@@ -66,14 +66,14 @@ export class SignIn extends React.Component {
           
             <Button
               handler={null}
-              modifier="_default"
+              styles="_default"
               type="submit"
               text="Sign In"
             />
             
             <Button
               handler={() => signInWithGoogle()}
-              modifier="_brand-g"
+              styles="_brand-g"
               type="button"
               text="Sign In With Google"
             />

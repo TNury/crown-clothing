@@ -35,7 +35,7 @@ export const CartDropdown = ({ reduxProps, history, dispatch }) => {
           history.push('/checkout')
           dispatch(toggleDropdown());
         }}
-        modifier="_dropdown"
+        styles="_dropdown"
         type="button"
         text="GO TO CHECKOUT"
       />
