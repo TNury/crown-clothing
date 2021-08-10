@@ -23,7 +23,6 @@ const auth = firebase.auth();
 const firestore = firebase.firestore();
 
 // CREATE USER FUNCTION
-
 async function createUserProfileDocument(user, additionalData) {
   if (!user) return;
 
@@ -47,7 +46,7 @@ async function createUserProfileDocument(user, additionalData) {
   }
 
   return userRef;
-}
+};
 
 // FUNCTION TO AUTOMATICALLY ADD AND/OR UPDATE INVENTORY TO FIREBASE FIRESTORE
 const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
@@ -66,6 +65,31 @@ const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
 
 };
 
+// FUNCTION TO CONVERT COLLECTION SNAPSHOT INTO A MAPPED ARRAY
+const convertCollectionSnapshotToMap = (collection) => {
+  
+  const transformedCollection = collection.docs.map((doc) => {
+    
+    const { title, items } = doc.data();
+
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items
+    }
+
+  });
+
+  return transformedCollection.reduce((accumulator, collection) => {
+
+    accumulator[collection.title.toLowerCase()] = collection;
+
+    return accumulator
+  }, {});
+
+};
+
 // SIGN IN WITH GOOGLE SETUP
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
@@ -74,10 +98,10 @@ provider.setCustomParameters({ prompt: 'select_account' });
 const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export {
-  firebase,
   auth,
   firestore,
   signInWithGoogle,
   createUserProfileDocument,
-  addCollectionAndDocuments
+  addCollectionAndDocuments,
+  convertCollectionSnapshotToMap
 };

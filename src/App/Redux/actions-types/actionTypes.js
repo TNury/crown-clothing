@@ -6,3 +6,6 @@ export const TOGGLE_DROPDOWN = 'TOGGLE_DROPDOWN';
 export const ADD_ITEM = 'ADD_ITEM';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
+
+// INVENTORY ACTIONS
+export const UPDATE_INVENTORY = 'UPDATE_INVENTORY';
