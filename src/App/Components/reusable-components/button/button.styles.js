@@ -14,7 +14,6 @@ export const buttonStyles = createUseStyles({
     color: 'white',
     textTransform: 'uppercase',
     fontWeight: 'bolder',
-    border: 'none',
     cursor: 'pointer',
     border: '1px solid black',
     margin: '-1px',
