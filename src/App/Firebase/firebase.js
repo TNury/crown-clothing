@@ -49,6 +49,23 @@ async function createUserProfileDocument(user, additionalData) {
   return userRef;
 }
 
+// FUNCTION TO AUTOMATICALLY ADD AND/OR UPDATE INVENTORY TO FIREBASE FIRESTORE
+const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+  
+  const collectionRef = firestore.collection(collectionKey);
+  const batch = firestore.batch();
+
+  objectsToAdd.forEach((obj) => {
+    
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj);
+
+  });
+
+  return await batch.commit();
+
+};
+
 // SIGN IN WITH GOOGLE SETUP
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
@@ -62,4 +79,5 @@ export {
   firestore,
   signInWithGoogle,
   createUserProfileDocument,
+  addCollectionAndDocuments
 };
