@@ -1,9 +1,8 @@
-import { SHOP_INVENTORY } from './data/shop-inventory.js';
 // ACTION TYPES 
 import { UPDATE_INVENTORY } from '../../actions-types/actionTypes.js';
 
 const INITIAL_STORE = {
-  inventory: SHOP_INVENTORY
+  inventory: null
 };
 
 export const inventory = (currentStore = INITIAL_STORE, action) => {

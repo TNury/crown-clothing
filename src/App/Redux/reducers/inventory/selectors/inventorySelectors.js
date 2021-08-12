@@ -12,16 +12,16 @@ export const inventoryItemSelector = createSelector(
   (inventoryReducer) => inventoryReducer.inventory
 );
 
-// 
+// INVENTORY PREVIEW SELECTOR
 export const inventoryPreviewSelector = createSelector(
   inventoryItemSelector,
-  (inventory) => Object.keys(inventory).map((key) => inventory[key])
+  (inventory) => inventory ? Object.keys(inventory).map((key) => inventory[key]) : []
 );
 
 // CATEGORY SELECTOR
 export const categorySelector = memoize((categoryId) => (
   createSelector(
     inventoryItemSelector,
-    (inventory) => inventory[categoryId]
+    (inventory) => inventory ? inventory[categoryId] : null
   )
 ));
