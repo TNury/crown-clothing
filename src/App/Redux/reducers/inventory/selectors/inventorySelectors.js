@@ -29,5 +29,11 @@ export const categorySelector = memoize((categoryId) => (
 // IS INVENTORY FETCHING SELECTOR
 export const isInventoryFetchingSelector = createSelector(
   inventorySelector,
-  (inventory) => inventory.isFecthing
+  (inventoryReducer) => inventoryReducer.isFecthing
+);
+
+// IS INVENTORY LOADED SELECTOR
+export const isInventoryLoadedSelector = createSelector(
+  inventoryItemSelector,
+  (inventory) => !!inventory
 );

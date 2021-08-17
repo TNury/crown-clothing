@@ -7,7 +7,10 @@ import { connect } from 'react-redux';
 // REDUX ACTIONS
 import { fetchInventoryStartAsync } from '../../../Redux/reducers/inventory/actions/inventoryActions.js';
 // REDUX SELECTORS
-import { isInventoryFetchingSelector } from '../../../Redux/reducers/inventory/selectors/inventorySelectors.js';
+import {
+  isInventoryFetchingSelector,
+  isInventoryLoadedSelector
+} from '../../../Redux/reducers/inventory/selectors/inventorySelectors.js';
 // HIGHER ORDER COMPONENTS
 import { WithSpinner } from '../../reusable-components/with-spinner/withSpinner.jsx';
 // COMPONENTS
@@ -32,7 +35,7 @@ class ShopPage extends React.Component {
 
     const {
       match,
-      reduxProps: { isInventoryFetching }
+      reduxProps: { isInventoryFetching, isInventoryLoadedSelector }
     } = this.props;
 
     return (
@@ -50,7 +53,10 @@ class ShopPage extends React.Component {
           path={`${match.path}/:categoryId`} 
           render={(props) => {
             return (
-              <InventoryPageWithSpinner isLoading={isInventoryFetching} {...props} />
+              <InventoryPageWithSpinner
+                isLoading={!isInventoryLoadedSelector}
+                {...props}
+              />
             );
           }}
         />
@@ -61,7 +67,8 @@ class ShopPage extends React.Component {
 
 const mapStoreToProps = (currentStore) => ({
   reduxProps: {
-    isInventoryFetching: isInventoryFetchingSelector(currentStore)
+    isInventoryFetching: isInventoryFetchingSelector(currentStore),
+    isInventoryLoadedSelector: isInventoryLoadedSelector(currentStore)
   }
 });
 
