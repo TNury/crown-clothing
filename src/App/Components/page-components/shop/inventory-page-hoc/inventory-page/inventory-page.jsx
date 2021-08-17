@@ -1,8 +1,8 @@
 // REDUX
 import { connect } from 'react-redux';
-import { categorySelector } from '../../../../Redux/reducers/inventory/selectors/inventorySelectors.js';
+import { categorySelector } from '../../../../../Redux/reducers/inventory/selectors/inventorySelectors.js';
 // COMPONENTS
-import InventoryItem from '../../../reusable-components/inventory-item/inventory-item.jsx';
+import InventoryItem from '../../../../reusable-components/inventory-item/inventory-item.jsx';
 // STYLES
 import { inventoryPageStyles } from './inventory-page.styles.js';
 
