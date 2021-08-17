@@ -4,12 +4,10 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 // REDUX
 import { connect } from 'react-redux';
-import { updateInventory } from '../../../Redux/reducers/inventory/actions/inventoryActions.js';
-// FIREBASE
-import {
-  firestore,
-  convertCollectionSnapshotToMap
-} from '../../../Firebase/firebase.js';
+// REDUX ACTIONS
+import { fetchInventoryStartAsync } from '../../../Redux/reducers/inventory/actions/inventoryActions.js';
+// REDUX SELECTORS
+import { isInventoryFetchingSelector } from '../../../Redux/reducers/inventory/selectors/inventorySelectors.js';
 // HIGHER ORDER COMPONENTS
 import { WithSpinner } from '../../reusable-components/with-spinner/withSpinner.jsx';
 // COMPONENTS
@@ -21,33 +19,21 @@ const InventoryOverviewWithSpinner = WithSpinner(InventoryOverview);
 const InventoryPageWithSpinner = WithSpinner(InventoryPage);
 
 class ShopPage extends React.Component {
-  state = {
-    loading: true
-  };
-
-  unsubscribeFromSnapshot = null;
 
   componentDidMount() {
 
-    const collectionRef = firestore.collection('inventory');
     const { dispatch } = this.props;
-    
-    collectionRef.get().then((snapshot) => {
 
-      const inventoryMap = convertCollectionSnapshotToMap(snapshot);
-      
-      dispatch(updateInventory(inventoryMap));
-
-      this.setState({ loading: false });
-
-    });
+    dispatch(fetchInventoryStartAsync());
 
   }
 
   render() {
 
-    const { match } = this.props;
-    const { loading: loadingStatus } = this.state;
+    const {
+      match,
+      reduxProps: { isInventoryFetching }
+    } = this.props;
 
     return (
       <div className="shop-page">
@@ -56,7 +42,7 @@ class ShopPage extends React.Component {
           path={`${match.path}`} 
           render={(props) => { 
             return (
-              <InventoryOverviewWithSpinner isLoading={loadingStatus} {...props} />
+              <InventoryOverviewWithSpinner isLoading={isInventoryFetching} {...props} />
             );
           }}    
         />
@@ -64,7 +50,7 @@ class ShopPage extends React.Component {
           path={`${match.path}/:categoryId`} 
           render={(props) => {
             return (
-              <InventoryPageWithSpinner isLoading={loadingStatus} {...props} />
+              <InventoryPageWithSpinner isLoading={isInventoryFetching} {...props} />
             );
           }}
         />
@@ -73,4 +59,10 @@ class ShopPage extends React.Component {
   }
 };
 
-export default connect(null)(ShopPage);
+const mapStoreToProps = (currentStore) => ({
+  reduxProps: {
+    isInventoryFetching: isInventoryFetchingSelector(currentStore)
+  }
+});
+
+export default connect(mapStoreToProps, null)(ShopPage);

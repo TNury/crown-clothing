@@ -25,3 +25,9 @@ export const categorySelector = memoize((categoryId) => (
     (inventory) => inventory ? inventory[categoryId] : null
   )
 ));
+
+// IS INVENTORY FETCHING SELECTOR
+export const isInventoryFetchingSelector = createSelector(
+  inventorySelector,
+  (inventory) => inventory.isFecthing
+);
