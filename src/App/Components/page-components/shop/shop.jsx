@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 // REDUX
 import { connect } from 'react-redux';
 // REDUX ACTIONS
-import { fetchInventoryStartAsync } from '../../../Redux/reducers/inventory/actions/inventoryActions.js';
+import { fetchInventoryStart } from '../../../Redux/reducers/inventory/actions/inventoryActions.js';
 // COMPONENTS
 import { InventoryOverviewHOC } from './inventory-overview-hoc/inventory-overview-hoc.jsx';
 import { InventoryPageHOC } from './inventory-page-hoc/inventory-page-hoc.jsx';
@@ -16,7 +16,7 @@ class ShopPage extends React.Component {
 
     const { dispatch } = this.props;
 
-    dispatch(fetchInventoryStartAsync());
+    dispatch(fetchInventoryStart());
 
   }
 
