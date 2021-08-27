@@ -24,22 +24,22 @@ class App extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props;
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        const userRef = await createUserProfileDocument(user);
+    // this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
+    //   if (user) {
+    //     const userRef = await createUserProfileDocument(user);
 
-        userRef.onSnapshot((userData) => {
-          dispatch(
-            setCurrentUser({
-              id: userData.id,
-              ...userData.data()
-            })
-          );
-        });
-      } else {
-        dispatch(setCurrentUser(user));
-      }
-    });
+    //     userRef.onSnapshot((userData) => {
+    //       dispatch(
+    //         setCurrentUser({
+    //           id: userData.id,
+    //           ...userData.data()
+    //         })
+    //       );
+    //     });
+    //   } else {
+    //     dispatch(setCurrentUser(user));
+    //   }
+    // });
   }
 
   componentWillUnmount() {

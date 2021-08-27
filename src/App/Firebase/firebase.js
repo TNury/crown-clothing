@@ -91,15 +91,16 @@ const convertCollectionSnapshotToMap = (collection) => {
 };
 
 // SIGN IN WITH GOOGLE SETUP
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: 'select_account' });
 
 // POPUPS
-const signInWithGoogle = () => auth.signInWithPopup(provider);
+const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export {
   auth,
   firestore,
+  googleProvider,
   signInWithGoogle,
   createUserProfileDocument,
   addCollectionAndDocuments,

@@ -34,6 +34,7 @@ export function* fetchInventoryAsync() {
 
 }
 
+// ACTION TRIGGER FUNCTION
 export function* fetchInventoryStart() {
   yield takeLatest(FETCH_INVENTORY_START, fetchInventoryAsync);
 }

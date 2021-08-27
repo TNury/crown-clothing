@@ -1,5 +1,5 @@
 // COMPONENTS
-import { SignIn } from './sign-in/sign-in.jsx';
+import SignIn from './sign-in/sign-in.jsx';
 import { SignUp } from './sign-up/sign-up.jsx';
 // STYLES
 import { authPageStyles } from './auth.styles.js';
