@@ -7,11 +7,11 @@ import {
 // REDUX ACTIONS
 import { fetchInventorySuccess, fetchInventorFailure } from '../actions/inventoryActions.js';
 // SAGA EFFECTS
-import { takeEvery, call, put } from 'redux-saga/effects';
+import { takeLatest, call, put } from 'redux-saga/effects';
 
 /*
-  1. takeEvery = listens to every instance in which that action is called and 
-  does something;
+  1. takeLatest = listens all instances of an action and does something
+  with the latest returned value of that action;
   2. call = ??;
   3. put = basically what dispatch is in redux, put is in saga.
 */ 
@@ -35,5 +35,5 @@ export function* fetchInventoryAsync() {
 }
 
 export function* fetchInventoryStart() {
-  yield takeEvery(FETCH_INVENTORY_START, fetchInventoryAsync);
+  yield takeLatest(FETCH_INVENTORY_START, fetchInventoryAsync);
 }
