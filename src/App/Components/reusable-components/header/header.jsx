@@ -30,7 +30,7 @@ const Header = ({ reduxProps: { userProps, displayDropdownProp } }) => {
         {
           userProps
           ?
-          <div onClick={() => auth.signOut()} className={option} >SIGN OUT</div>
+          <div onClick={() => auth.signOut()} className={option}>SIGN OUT</div>
           :
           <Link className={option} to="/auth">SIGN IN</Link>
         } 
