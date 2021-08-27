@@ -6,58 +6,62 @@ import { takeLatest, put, all, call } from 'redux-saga/effects';
 import { GOOGLE_SIGN_IN_START, EMAIL_SIGN_IN_START } from '../../../actions-types/actionTypes.js';
 // ACTIONS
 import {
-  googleSignInSuccess,
-  googleSignInFailure,
-  emailSignInSuccess,
-  emailSignInFailure
+  signInSuccess,
+  signInFailure
 } from '../actions/userActions.js';
 
-// GOOGLE SIGN IN SAGAS
-
-export function* signInWithGoogle() {
+export function* getSnapshotFromUserAuth(userAuth) {
   try {
-
-    const { user } = yield auth.signInWithPopup(googleProvider);
-    const userRef = yield call(createUserProfileDocument, user);
+    const userRef = yield call(createUserProfileDocument, userAuth);
     const userSnapShot = yield userRef.get();
 
     yield put(
-      googleSignInSuccess({ id: userSnapShot.id, ...userSnapShot.data() })
+      signInSuccess({ id: userSnapShot.id, ...userSnapShot.data() })
     );
 
   } catch(error) {
 
-    yield put(googleSignInFailure(error))
-
-  }
-};
-
-// SAGA TRIGGER FUNCTION
-export function* onGoogleSignInStart() {
-  yield takeLatest(GOOGLE_SIGN_IN_START, signInWithGoogle);
-};
-
-// EMAIL SIGN IN SAGAS
-
-export function* onSignInWithEmail({ payload: { email, password }}) {
-  try {
-    
-    const { user } = yield auth.signInWithEmailAndPassword(email, password);
-    const userRef = yield call(createUserProfileDocument, user);
-    const userSnapShot = yield userRef.get();
-
-    yield put(
-      emailSignInSuccess({ id: userSnapShot.id, ...userSnapShot.data() })
-    );
-
-  } catch (error) {
-
-    put(emailSignInFailure(error))
+    yield put(signInFailure(error))
 
   }
 }
 
-// SAGA TRIGGER FUNCTION
+// GOOGLE SIGN IN SAGA
+export function* signInWithGoogle() {
+  try {
+
+    const { user } = yield auth.signInWithPopup(googleProvider);
+    
+    yield getSnapshotFromUserAuth(user);
+
+  } catch(error) {
+
+    yield put(signInFailure(error))
+
+  }
+};
+
+// GOOGLE SAGA TRIGGER FUNCTION
+export function* onGoogleSignInStart() {
+  yield takeLatest(GOOGLE_SIGN_IN_START, signInWithGoogle);
+};
+
+// EMAIL SIGN IN SAGA
+export function* onSignInWithEmail({ payload: { email, password }}) {
+  try {
+    
+    const { user } = yield auth.signInWithEmailAndPassword(email, password);
+    
+    yield getSnapshotFromUserAuth(user);
+
+  } catch (error) {
+
+    put(signInFailure(error));
+
+  }
+}
+
+// EMAIL SAGA TRIGGER FUNCTION
 export function* onEmailAndPasswordStart() {
   yield takeLatest(EMAIL_SIGN_IN_START, onSignInWithEmail);
 }
