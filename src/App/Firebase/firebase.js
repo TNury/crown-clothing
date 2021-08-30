@@ -90,6 +90,23 @@ const convertCollectionSnapshotToMap = (collection) => {
 
 };
 
+// GET CURRENT USER / TBD
+const getCurrentUser = () => {
+
+  return new Promise((resolve, reject) => {
+
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+
+      unsubscribe();
+      
+      resolve(userAuth);
+
+    }, reject);
+
+  });
+
+};
+
 // SIGN IN WITH GOOGLE SETUP
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: 'select_account' });
@@ -100,6 +117,7 @@ const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 export {
   auth,
   firestore,
+  getCurrentUser,
   googleProvider,
   signInWithGoogle,
   createUserProfileDocument,

@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { currentUserSelector } from '../../../Redux/reducers/user/selectors/userSelectors.js'; 
 import { displayDropdownSelector } from '../../../Redux/reducers/cart/selectors/cartSelectors';
-
-// FIREBASE 
-import { auth } from '../../../Firebase/firebase.js';
+import { signOutStart } from '../../../Redux/reducers/user/actions/userActions.js';
 // ICON
 import { ReactComponent as Logo } from '../../../Assets/icons/crown.svg';
 // COMPONENTS
@@ -15,8 +13,9 @@ import CartDropdown from './cart-dropdown/cart-dropdown.jsx';
 // STYLES
 import { headerStyles } from './header.styles.js';
 
-const Header = ({ reduxProps: { userProps, displayDropdownProp } }) => {
+const Header = ({ reduxProps, dispatch }) => {
 
+  const { userProps, displayDropdownProp } = reduxProps;
   const { header, logoContainer, options, option } = headerStyles();
 
   return (
@@ -30,7 +29,7 @@ const Header = ({ reduxProps: { userProps, displayDropdownProp } }) => {
         {
           userProps
           ?
-          <div onClick={() => auth.signOut()} className={option}>SIGN OUT</div>
+          <div onClick={() => dispatch(signOutStart())} className={option}>SIGN OUT</div>
           :
           <Link className={option} to="/auth">SIGN IN</Link>
         } 
