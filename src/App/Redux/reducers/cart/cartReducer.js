@@ -1,5 +1,9 @@
-// ACTIONS VARIABLES
-import { TOGGLE_DROPDOWN, ADD_ITEM, REMOVE_ITEM, DELETE_ITEM } from '../../actions-types/actionTypes.js';
+// ACTIONS TYPES
+import {
+  TOGGLE_DROPDOWN, ADD_ITEM,
+  REMOVE_ITEM, DELETE_ITEM,
+  CLEAR_CART
+} from '../../actions-types/actionTypes.js';
 // UTILITY FUNCTIONS
 import { addItemToCart, removeItemFromCart } from './utility/cartUtils.js';
 
@@ -27,12 +31,17 @@ export const cart = (currentStore = INITIAL_STORE, action) => {
         ...currentStore,
         cartItems: removeItemFromCart(currentStore.cartItems, action.payload)
       };
-    case DELETE_ITEM: 
+    case DELETE_ITEM:
       return {
         ...currentStore,
-        cartItems: currentStore.cartItems.filter((cartItem) => (
-          cartItem.id !== action.payload
-        ))
+        cartItems: currentStore.cartItems.filter(
+          (cartItem) => cartItem.id !== action.payload
+        )
+      };
+    case CLEAR_CART:
+      return {
+        ...currentStore,
+        cartItems: []
       };
     default:
       return currentStore;
