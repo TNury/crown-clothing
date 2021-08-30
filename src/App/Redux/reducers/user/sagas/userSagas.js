@@ -12,21 +12,26 @@ import {
   GOOGLE_SIGN_IN_START, 
   EMAIL_SIGN_IN_START, 
   CHECK_USER_SESSION,
+  SIGN_UP_SUCCESS,
+  SIGN_OUT_FAILURE,
+  SIGN_UP_START,
   SIGN_OUT_START
 } from '../../../actions-types/actionTypes.js';
 // ACTIONS
 import {
   signInSuccess,
   signInFailure,
+  signUpSuccess,
+  signUpFailure,
   signOutSuccess,
   signOutFailure
 } from '../actions/userActions.js';
 
 // ATF = ACTION TRIGGER FUNCTION
 
-export function* getSnapshotFromUserAuth(userAuth) {
+export function* getSnapshotFromUserAuth(userAuth, additionalData) {
   try {
-    const userRef = yield call(createUserProfileDocument, userAuth);
+    const userRef = yield call(createUserProfileDocument, userAuth, additionalData);
     const userSnapShot = yield userRef.get();
 
     yield put(
@@ -127,12 +132,50 @@ export function* onSignOutStart() {
 };
 
 
+
+/* TESTING ZONE */ 
+
+export function* signInAfterSignUp({ payload: { user, additionalData } }) {
+
+  yield getSnapshotFromUserAuth(user, additionalData);
+
+};
+
+export function* onSignUpSuccess() {
+
+  yield takeLatest(SIGN_UP_SUCCESS, signInAfterSignUp);
+
+};
+
+export function* signUp({ payload }) {
+
+  const { displayName, email, password } = payload;
+
+  try {
+
+    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+
+    yield put(signUpSuccess({ user, additionalData: { displayName } }));
+    
+  } catch (error) {
+
+    yield put(signUpFailure(error));
+
+  }
+};
+
+export function* onSignUpStart() {
+  yield takeLatest(SIGN_UP_START, signUp);
+};
+
 // EXPORTS USER SAGAS TO ROOT SAGA
 export function* userSagas() {
   yield all([
     call(onGoogleSignInStart),
     call(onEmailAndPasswordStart),
     call(onCheckUserSession),
+    call(onSignUpStart),
+    call(onSignUpSuccess),
     call(onSignOutStart)
   ]);
 };

@@ -2,6 +2,7 @@
 import { 
   SIGN_IN_SUCCESS, 
   SIGN_IN_FAILURE,
+  SIGN_UP_FAILURE,
   SIGN_OUT_SUCCESS,
   SIGN_OUT_FAILURE
 } from '../../actions-types/actionTypes';
@@ -26,6 +27,7 @@ export const user = (currentStore = INITIAL_STORE, action) => {
         error: null
       };
     case SIGN_IN_FAILURE:
+    case SIGN_UP_FAILURE:
     case SIGN_OUT_FAILURE:
       return {
         ...currentStore,

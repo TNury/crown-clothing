@@ -8,14 +8,11 @@ import { FormInput } from '../../../reusable-components/form-input/form-input.js
 import { Button } from '../../../reusable-components/button/button';
 
 class SignIn extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      email: '',
-      password: ''
-    };
-  }
+  state = {
+    email: '',
+    password: ''
+  };
 
   handleSubmit = async (event) => {
 
@@ -25,6 +22,7 @@ class SignIn extends React.Component {
     const { reduxActions: { emailSignInStart } } = this.props;
 
     emailSignInStart(email, password);
+
   };
 
   handleChange(event) {
@@ -32,7 +30,7 @@ class SignIn extends React.Component {
     const { name, value } = event.target;
     this.setState({ [name]: value });
 
-  }
+  };
 
   render() {
 
