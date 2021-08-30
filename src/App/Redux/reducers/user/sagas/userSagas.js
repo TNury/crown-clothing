@@ -94,6 +94,38 @@ export function* onSignInWithEmail({ payload: { email, password }}) {
   }
 };
 
+// SIGN IN AFTER SIGN UP SUCCESS SAGA
+export function* signInAfterSignUp({ payload: { user, additionalData } }) {
+
+  yield getSnapshotFromUserAuth(user, additionalData);
+
+};
+
+// ON SIGN UP SUCCESS SAGA
+export function* onSignUpSuccess() {
+
+  yield takeLatest(SIGN_UP_SUCCESS, signInAfterSignUp);
+
+};
+
+// SIGN UP SAGA
+export function* signUp({ payload }) {
+
+  const { displayName, email, password } = payload;
+
+  try {
+
+    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+
+    yield put(signUpSuccess({ user, additionalData: { displayName } }));
+    
+  } catch (error) {
+
+    yield put(signUpFailure(error));
+
+  }
+};
+
 // SIGN OUT SAGA
 export function* signOut() {
   try {
@@ -126,46 +158,14 @@ export function* onEmailAndPasswordStart() {
   yield takeLatest(EMAIL_SIGN_IN_START, onSignInWithEmail);
 };
 
+// SIGN UP ATF
+export function* onSignUpStart() {
+  yield takeLatest(SIGN_UP_START, signUp);
+};
+
 // SIGN OUT ATF
 export function* onSignOutStart() {
   yield takeLatest(SIGN_OUT_START, signOut);
-};
-
-
-
-/* TESTING ZONE */ 
-
-export function* signInAfterSignUp({ payload: { user, additionalData } }) {
-
-  yield getSnapshotFromUserAuth(user, additionalData);
-
-};
-
-export function* onSignUpSuccess() {
-
-  yield takeLatest(SIGN_UP_SUCCESS, signInAfterSignUp);
-
-};
-
-export function* signUp({ payload }) {
-
-  const { displayName, email, password } = payload;
-
-  try {
-
-    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
-
-    yield put(signUpSuccess({ user, additionalData: { displayName } }));
-    
-  } catch (error) {
-
-    yield put(signUpFailure(error));
-
-  }
-};
-
-export function* onSignUpStart() {
-  yield takeLatest(SIGN_UP_START, signUp);
 };
 
 // EXPORTS USER SAGAS TO ROOT SAGA
