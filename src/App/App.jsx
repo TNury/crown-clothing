@@ -3,11 +3,9 @@ import React from 'react';
 // REDUX
 import { connect } from 'react-redux';
 import { currentUserSelector } from './Redux/reducers/user/selectors/userSelectors.js';
-import { setCurrentUser } from './Redux/reducers/user/actions/userActions.js';
+import { checkUserSession } from './Redux/reducers/user/actions/userActions.js';
 // REACT-ROUTER
 import { Switch, Route, Redirect } from 'react-router-dom';
-// FIREBASE
-import { auth, createUserProfileDocument } from './Firebase/firebase.js';
 // PAGE COMPONENTS
 import { HomePage } from './Components/page-components/home/home.jsx';
 import ShopPage from './Components/page-components/shop/shop.jsx';
@@ -22,24 +20,11 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+
     const { dispatch } = this.props;
+    
+    dispatch(checkUserSession());
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        const userRef = await createUserProfileDocument(user);
-
-        userRef.onSnapshot((userData) => {
-          dispatch(
-            setCurrentUser({
-              id: userData.id,
-              ...userData.data()
-            })
-          );
-        });
-      } else {
-        dispatch(setCurrentUser(user));
-      }
-    });
   }
 
   componentWillUnmount() {

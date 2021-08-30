@@ -90,16 +90,35 @@ const convertCollectionSnapshotToMap = (collection) => {
 
 };
 
+// GET CURRENT USER / TBD
+const getCurrentUser = () => {
+
+  return new Promise((resolve, reject) => {
+
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+
+      unsubscribe();
+      
+      resolve(userAuth);
+
+    }, reject);
+
+  });
+
+};
+
 // SIGN IN WITH GOOGLE SETUP
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: 'select_account' });
 
 // POPUPS
-const signInWithGoogle = () => auth.signInWithPopup(provider);
+const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export {
   auth,
   firestore,
+  getCurrentUser,
+  googleProvider,
   signInWithGoogle,
   createUserProfileDocument,
   addCollectionAndDocuments,

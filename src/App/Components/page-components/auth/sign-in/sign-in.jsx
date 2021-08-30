@@ -1,41 +1,41 @@
 // REACT
 import React from 'react';
-// FIREBASE
-import { auth, signInWithGoogle } from '../../../../Firebase/firebase.js';
+// REDUX 
+import { connect } from 'react-redux';
+import { googleSignInStart, emailSignInStart } from '../../../../Redux/reducers/user/actions/userActions.js';
 // REUSABLE COMPONENTS
 import { FormInput } from '../../../reusable-components/form-input/form-input.jsx';
 import { Button } from '../../../reusable-components/button/button';
 
-export class SignIn extends React.Component {
-  constructor(props) {
-    super(props);
+class SignIn extends React.Component {
 
-    this.state = {
-      email: '',
-      password: ''
-    };
-  }
+  state = {
+    email: '',
+    password: ''
+  };
 
   handleSubmit = async (event) => {
+
     event.preventDefault();
 
     const { email, password } = this.state;
+    const { reduxActions: { emailSignInStart } } = this.props;
 
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      this.setState({ email: '', password: '' });
-    } catch (error) {
-      console.log(error);
-    }
+    emailSignInStart(email, password);
+
   };
 
   handleChange(event) {
+
     const { name, value } = event.target;
     this.setState({ [name]: value });
-  }
+
+  };
 
   render() {
+
     const { email, password } = this.state;
+    const { reduxActions: { googleSignInStart } } = this.props;
 
     return (
       <div className="sign-in">
@@ -43,7 +43,6 @@ export class SignIn extends React.Component {
         <span>Sign in with email and password</span>
 
         <form onSubmit={this.handleSubmit}>
-
           <FormInput
             handler={(event) => this.handleChange(event)}
             value={email}
@@ -63,24 +62,26 @@ export class SignIn extends React.Component {
           />
 
           <div className="buttons">
-          
+            <Button handler={null} styles="_default" type="submit" text="Sign In" />
+
             <Button
-              handler={null}
-              styles="_default"
-              type="submit"
-              text="Sign In"
-            />
-            
-            <Button
-              handler={() => signInWithGoogle()}
+              handler={() => googleSignInStart()}
               styles="_brand-g"
               type="button"
               text="Sign In With Google"
             />
-            
           </div>
         </form>
       </div>
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  reduxActions: {
+    googleSignInStart: () => dispatch(googleSignInStart()),
+    emailSignInStart: (email, password) => dispatch(emailSignInStart({ email, password }))
+  }
+});
+
+export default connect(null, mapDispatchToProps)(SignIn);

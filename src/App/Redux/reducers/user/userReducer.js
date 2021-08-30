@@ -1,16 +1,37 @@
-// ACTION VARIABLES
-import { SET_CURRENT_USER } from '../../actions-types/actionTypes';
+// ACTION TYPES
+import { 
+  SIGN_IN_SUCCESS, 
+  SIGN_IN_FAILURE,
+  SIGN_UP_FAILURE,
+  SIGN_OUT_SUCCESS,
+  SIGN_OUT_FAILURE
+} from '../../actions-types/actionTypes';
 
 const INITIAL_STORE = {
-  user: null
+  user: null,
+  error: null
 };
 
 export const user = (currentStore = INITIAL_STORE, action) => {
   switch (action.type) {
-    case SET_CURRENT_USER:
+    case SIGN_IN_SUCCESS:
       return {
         ...currentStore,
-        user: action.payload
+        user: action.payload,
+        error: null
+      };
+    case SIGN_OUT_SUCCESS:
+      return {
+        ...currentStore,
+        user: null,
+        error: null
+      };
+    case SIGN_IN_FAILURE:
+    case SIGN_UP_FAILURE:
+    case SIGN_OUT_FAILURE:
+      return {
+        ...currentStore,
+        error: action.payload
       };
     default:
       return currentStore;

@@ -1,5 +1,8 @@
 // REACT
 import React from 'react';
+// REDUX
+import { connect } from 'react-redux';
+import { signUpStart } from '../../../../Redux/reducers/user/actions/userActions.js';
 // FIREBASE
 import {
   auth,
@@ -9,57 +12,52 @@ import {
 import { FormInput } from '../../../reusable-components/form-input/form-input.jsx';
 import { Button } from '../../../reusable-components/button/button.jsx';
 
-export class SignUp extends React.Component {
-  constructor() {
-    super();
+class SignUp extends React.Component {
+  state = {
+    displayName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  };
 
-    this.state = {
-      displayName: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    };
-  }
+  handleSubmit = (event) => {
 
-  handleSubmit = async (event) => {
     event.preventDefault();
 
     const { displayName, email, password, confirmPassword } = this.state;
 
-    if (password !== confirmPassword) {
-      alert("Password don't match!");
+    const userCredentials = {
+      displayName,
+      email,
+      password
+    };
+
+    if(password !== confirmPassword) {
+
+      alert('Passwords do not match!');
+
       return;
-    }
 
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
+    };
 
-      // If this suceeds, it creates a user profile document.
-      await createUserProfileDocument(user, { displayName });
+    const { dispatch } = this.props;
+    
+    dispatch(signUpStart(userCredentials));
 
-      // Else it clears the form.
-      this.setState({
-        displayName: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
-      });
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   handleChange(event) {
+
     const { name, value } = event.target;
+
     this.setState({ [name]: value });
+
   }
 
   render() {
-    const { displayName, email, password, confirmPassword } = this.state;
 
+    const { displayName, email, password, confirmPassword } = this.state;
+    
     return (
       <div className="sign-up">
         <h2 className="">I do not have an account</h2>
@@ -113,4 +111,6 @@ export class SignUp extends React.Component {
       </div>
     );
   }
-}
+};
+
+export default connect(null)(SignUp);

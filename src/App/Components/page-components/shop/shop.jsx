@@ -4,7 +4,6 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 // REDUX
 import { connect } from 'react-redux';
-// REDUX ACTIONS
 import { fetchInventoryStart } from '../../../Redux/reducers/inventory/actions/inventoryActions.js';
 // COMPONENTS
 import { InventoryOverviewHOC } from './inventory-overview-hoc/inventory-overview-hoc.jsx';
