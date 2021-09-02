@@ -1,5 +1,5 @@
 // REACT
-import React from 'react';
+import { useEffect } from 'react';
 // REDUX
 import { connect } from 'react-redux';
 import { currentUserSelector } from './Redux/reducers/user/selectors/userSelectors.js';
@@ -16,44 +16,31 @@ import Header from './Components/reusable-components/header/header.jsx';
 // STYLES MODULE
 import './App.scss';
 
-class App extends React.Component {
-  unsubscribeFromAuth = null;
+const App = ({ reduxProps: { userProps }, dispatch }) => {
 
-  componentDidMount() {
 
-    const { dispatch } = this.props;
-    
+  useEffect(() => {
+
     dispatch(checkUserSession());
 
-  }
+  }, [checkUserSession]); 
 
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
 
-  render() {
-    const { userProps } = this.props.reduxProps;
-
-    return (
-      <div className="app">
-        <Header />
-        <Switch>
-          {/* HOME PAGE */}
-          <Route exact path="/" component={HomePage} />
-          {/* SHOP PAGE */}
-          <Route path="/shop" component={ShopPage} />
-          {/* CHECKOUT PAGE */}
-          <Route path="/checkout" component={CheckoutPage} />
-          {/* AUTH PAGE */}
-          <Route
-            exact
-            path="/auth"
-            render={() => (userProps ? <Redirect to="/" /> : <AuthPage />)}
-          />
-        </Switch>
-      </div>
-    );
-  }
+  return (
+    <div className="app">
+      <Header />
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/shop" component={ShopPage} />
+        <Route path="/checkout" component={CheckoutPage} />
+        <Route
+          exact
+          path="/auth"
+          render={() => (userProps ? <Redirect to="/" /> : <AuthPage />)}
+        />
+      </Switch>
+    </div>
+  );
 }
 
 const mapStoreToProps = (currentStore) => ({

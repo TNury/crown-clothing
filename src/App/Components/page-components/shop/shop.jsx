@@ -1,5 +1,5 @@
 // REACT
-import React from 'react';
+import { useEffect } from 'react';
 // REACT ROUTER
 import { Route } from 'react-router-dom';
 // REDUX
@@ -9,34 +9,27 @@ import { fetchInventoryStart } from '../../../Redux/reducers/inventory/actions/i
 import { InventoryOverviewHOC } from './inventory-overview-hoc/inventory-overview-hoc.jsx';
 import { InventoryPageHOC } from './inventory-page-hoc/inventory-page-hoc.jsx';
 
-class ShopPage extends React.Component {
+const ShopPage = ({ dispatch, match }) => {
 
-  componentDidMount() {
-
-    const { dispatch } = this.props;
+  useEffect(() => {
 
     dispatch(fetchInventoryStart());
 
-  }
+  }, [fetchInventoryStart]);
 
-  render() {
-
-    const { match} = this.props;
-
-    return (
-      <div className="shop-page">
-        <Route 
-          exact 
-          path={`${match.path}`} 
-          component={InventoryOverviewHOC}
-        />
-        <Route
-          path={`${match.path}/:categoryId`}
-          component={InventoryPageHOC}
-        />
-      </div>
-    );
-  }
+  return (
+    <div className="shop-page">
+      <Route 
+        exact 
+        path={`${match.path}`} 
+        component={InventoryOverviewHOC}
+      />
+      <Route
+        path={`${match.path}/:categoryId`}
+        component={InventoryPageHOC}
+      />
+    </div>
+  );
 };
 
 export default connect(null)(ShopPage);
