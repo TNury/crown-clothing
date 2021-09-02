@@ -6,6 +6,8 @@ import { googleSignInStart, emailSignInStart } from '../../../../Redux/reducers/
 // REUSABLE COMPONENTS
 import { FormInput } from '../../../reusable-components/form-input/form-input.jsx';
 import { Button } from '../../../reusable-components/button/button';
+// STYLES
+import { signInPageStyles } from './sign-in.styles.js';
 
 const SignIn = ({ reduxActions }) => {
 
@@ -20,6 +22,9 @@ const SignIn = ({ reduxActions }) => {
 
   // REDUX ACTIONS
   const { googleSignInStart, emailSignInStart } = reduxActions;
+
+  // STYLES
+  const { signIn, title, buttons } = signInPageStyles();
 
   // METHODS
   const handleSubmit = async (event) => {
@@ -39,8 +44,8 @@ const SignIn = ({ reduxActions }) => {
   };
 
   return (
-    <div className="sign-in">
-      <h2 className="title">I already have an account</h2>
+    <div className={signIn}>
+      <h2 className={title}>I already have an account</h2>
       <span>Sign in with email and password</span>
       <form onSubmit={(event) => handleSubmit(event)}>
         <FormInput
@@ -59,8 +64,13 @@ const SignIn = ({ reduxActions }) => {
           name="password"
           type="password"
         />
-        <div className="buttons">
-          <Button handler={null} styles="_default" type="submit" text="Sign In" />
+        <div className={buttons}>
+          <Button
+            handler={null}
+            styles="_default"
+            type="submit"
+            text="Sign In"
+          />
 
           <Button
             handler={() => googleSignInStart()}
