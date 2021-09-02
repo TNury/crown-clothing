@@ -9,11 +9,11 @@ import { fetchInventoryStart } from '../../../Redux/reducers/inventory/actions/i
 import { InventoryOverviewHOC } from './inventory-overview-hoc/inventory-overview-hoc.jsx';
 import { InventoryPageHOC } from './inventory-page-hoc/inventory-page-hoc.jsx';
 
-const ShopPage = ({ dispatch, match }) => {
+const ShopPage = ({ fetchInventoryStart, match }) => {
 
   useEffect(() => {
 
-    dispatch(fetchInventoryStart());
+    fetchInventoryStart();
 
   }, [fetchInventoryStart]);
 
@@ -32,4 +32,8 @@ const ShopPage = ({ dispatch, match }) => {
   );
 };
 
-export default connect(null)(ShopPage);
+const mapDispatchToProps = (dispatch) => ({
+  fetchInventoryStart: () => dispatch(fetchInventoryStart())
+});
+
+export default connect(null, mapDispatchToProps)(ShopPage);

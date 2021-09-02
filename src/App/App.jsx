@@ -13,21 +13,24 @@ import CheckoutPage from './Components/page-components/checkout/checkout-page.js
 import { AuthPage } from './Components/page-components/auth/auth.jsx';
 // REUSABLE COMPONENTS
 import Header from './Components/reusable-components/header/header.jsx';
-// STYLES MODULE
-import './App.scss';
+// STYLES
+import { appStyles } from './App.styles.js';
+import './Assets/font/font.scss';
 
-const App = ({ reduxProps: { userProps }, dispatch }) => {
+const App = ({ reduxProps: { userProps }, checkUserSession }) => {
 
-
+  // USE EFFECT
   useEffect(() => {
 
-    dispatch(checkUserSession());
+    checkUserSession();
 
   }, [checkUserSession]); 
 
+  // STYLES
+  const { app } = appStyles();
 
   return (
-    <div className="app">
+    <div className={app}>
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
@@ -49,4 +52,8 @@ const mapStoreToProps = (currentStore) => ({
   }
 });
 
-export default connect(mapStoreToProps)(App);
+const mapDispatchToProps = (dispatch) => ({
+  checkUserSession: () => dispatch(checkUserSession())
+});
+
+export default connect(mapStoreToProps, mapDispatchToProps)(App);
