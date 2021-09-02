@@ -3,11 +3,6 @@ import React from 'react';
 // REDUX
 import { connect } from 'react-redux';
 import { signUpStart } from '../../../../Redux/reducers/user/actions/userActions.js';
-// FIREBASE
-import {
-  auth,
-  createUserProfileDocument
-} from '../../../../Firebase/firebase.js';
 // REUSABLE COMPONENTS
 import { FormInput } from '../../../reusable-components/form-input/form-input.jsx';
 import { Button } from '../../../reusable-components/button/button.jsx';

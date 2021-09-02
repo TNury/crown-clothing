@@ -13,7 +13,6 @@ import {
   EMAIL_SIGN_IN_START, 
   CHECK_USER_SESSION,
   SIGN_UP_SUCCESS,
-  SIGN_OUT_FAILURE,
   SIGN_UP_START,
   SIGN_OUT_START
 } from '../../../actions-types/actionTypes.js';
