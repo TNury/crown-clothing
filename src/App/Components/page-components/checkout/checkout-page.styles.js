@@ -1,4 +1,4 @@
-// STYLES CREATOR FUNCTION
+// JSS STYLES HOOK
 import { createUseStyles } from 'react-jss';
 
 export const checkoutPageStyles = createUseStyles({
