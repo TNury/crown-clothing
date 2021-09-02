@@ -6,6 +6,8 @@ import { signUpStart } from '../../../../Redux/reducers/user/actions/userActions
 // REUSABLE COMPONENTS
 import { FormInput } from '../../../reusable-components/form-input/form-input.jsx';
 import { Button } from '../../../reusable-components/button/button.jsx';
+// STYLES
+import { signUpPageStyles } from './sign-up.styles.js';
 
 const SignUp = ({ dispatch }) => {
 
@@ -19,6 +21,9 @@ const SignUp = ({ dispatch }) => {
 
   // STATE VARIABLES
   const { displayName, email, password, confirmPassword } = userCredentials;
+
+  // STYLES
+  const { signUp, title } = signUpPageStyles(); 
 
   // METHODS
   const handleSubmit = (event) => {
@@ -50,8 +55,8 @@ const SignUp = ({ dispatch }) => {
   };
 
   return (
-    <div className="sign-up">
-      <h2 className="">I do not have an account</h2>
+    <div className={signUp}>
+      <h2 className={title}>I do not have an account</h2>
       <span>Sign up with your email and password</span>
       <form onSubmit={(event) => handleSubmit(event)} className="sign-up-form">
         <FormInput
