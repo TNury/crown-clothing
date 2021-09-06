@@ -1,14 +1,19 @@
 // REDUX
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { directorySectionSelector } from '../../../../Redux/reducers/directory/selectors/directorySelectors.js';
 // COMPONENTS
 import MenuItem from './menu-item/menu-item.jsx';
 // STYLES
 import { directoryMenuStyles } from './directory-menu.styles.js';
 
-export const DirectoryMenu = ({ reduxProps: { directoryProps } }) => {
+export const DirectoryMenu = () => {
 
+  // HOOKS
+  const directoryProps = useSelector(directorySectionSelector);
+
+  // STYLES
   const { directoryMenu } = directoryMenuStyles();
+
 
   return (
     <div className={directoryMenu}>
@@ -18,11 +23,3 @@ export const DirectoryMenu = ({ reduxProps: { directoryProps } }) => {
     </div>
   );
 };
-
-const mapStateToProps = (currentState) => ({
-  reduxProps: {
-    directoryProps: directorySectionSelector(currentState)
-  }
-});
-
-export default connect(mapStateToProps)(DirectoryMenu);

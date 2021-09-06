@@ -1,5 +1,5 @@
 // COMPONENTS
-import DirectoryMenu from './directory-menu/directory-menu.jsx';
+import { DirectoryMenu } from './directory-menu/directory-menu.jsx';
 // STYLES
 import { homePageStyles } from './home.styles.js';
 
