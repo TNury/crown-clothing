@@ -1,5 +1,5 @@
 // REDUX
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { itemCountSelector } from '../../../../Redux/reducers/cart/selectors/cartSelectors.js';
 import { toggleDropdown } from '../../../../Redux/reducers/cart/actions/cartActions.js';
 // ICON
@@ -7,9 +7,13 @@ import { ReactComponent as ShoppingIcon } from '../../../../Assets/icons/shoppin
 // STYLES
 import { cartIconStyles } from './cart-icon.styles.js';
 
-const CartIcon = ({ reduxProps, dispatch }) => {
+export const CartIcon = () => {
 
-  const { itemCountProp } = reduxProps;
+  // HOOKS
+  const itemCountProp = useSelector(itemCountSelector);
+  const dispatch = useDispatch();
+
+  // STYLES
   const { cartIcon, shoppingIcon, itemCount } = cartIconStyles();
 
   return (
@@ -19,11 +23,3 @@ const CartIcon = ({ reduxProps, dispatch }) => {
     </div>
   );
 };
-
-const mapStateToProps = (currentState) => ({
-  reduxProps: {
-    itemCountProp: itemCountSelector(currentState)
-  }
-});
-
-export default connect(mapStateToProps)(CartIcon);
