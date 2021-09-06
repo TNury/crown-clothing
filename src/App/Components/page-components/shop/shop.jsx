@@ -3,37 +3,27 @@ import { useEffect } from 'react';
 // REACT ROUTER
 import { Route } from 'react-router-dom';
 // REDUX
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchInventoryStart } from '../../../Redux/reducers/inventory/actions/inventoryActions.js';
 // COMPONENTS
 import { InventoryOverview } from './inventory-overview/inventory-overview.jsx';
-import { InventoryPageHOC } from './inventory-page-hoc/inventory-page-hoc.jsx';
+import { InventoryPage } from './inventory-page/inventory-page.jsx';
 
-const ShopPage = ({ fetchInventoryStart, match }) => {
+export const ShopPage = ({ match }) => {
+
+  // HOOKS
+  const dispatch = useDispatch();
 
   useEffect(() => {
 
-    fetchInventoryStart();
+    dispatch(fetchInventoryStart());
 
-  }, [fetchInventoryStart]);
+  }, [dispatch]);
 
   return (
     <div className="shop-page">
-      <Route 
-        exact 
-        path={`${match.path}`} 
-        component={InventoryOverview}
-      />
-      <Route
-        path={`${match.path}/:categoryId`}
-        component={InventoryPageHOC}
-      />
+      <Route exact path={`${match.path}`} component={InventoryOverview} />
+      <Route path={`${match.path}/:categoryId`} component={InventoryPage} />
     </div>
   );
 };
-
-const mapDispatchToProps = (dispatch) => ({
-  fetchInventoryStart: () => dispatch(fetchInventoryStart())
-});
-
-export default connect(null, mapDispatchToProps)(ShopPage);
