@@ -1,5 +1,5 @@
 // COMPONENTS
-import InventoryItem from '../../../../../reusable-components/inventory-item/inventory-item.jsx';
+import { InventoryItem } from '../../../../reusable-components/inventory-item/inventory-item.jsx';
 // STYLES
 import { collectionPreviewStyles } from './inventory-preview.styles.js';
 

@@ -1,13 +1,17 @@
 // REDUX
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addItem } from '../../../Redux/reducers/cart/actions/cartActions.js';
 // REUSABLE COMPONENTS
 import { Button } from '../button/button.jsx';
 // STYLES
 import { inventoryItemStyles } from './inventory-item.styles.js';
 
-const InventoryItem = ({ drilledProps, dispatch }) => {
+export const InventoryItem = ({ drilledProps }) => {
 
+  // HOOKS
+  const dispatch = useDispatch();
+
+  // STYLES
   const { name, price, imageUrl } = drilledProps;
   const {
     collectionItem,
@@ -39,5 +43,3 @@ const InventoryItem = ({ drilledProps, dispatch }) => {
     </div>
   );
 };
-
-export default connect(null)(InventoryItem);

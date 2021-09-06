@@ -6,7 +6,7 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchInventoryStart } from '../../../Redux/reducers/inventory/actions/inventoryActions.js';
 // COMPONENTS
-import { InventoryOverviewHOC } from './inventory-overview-hoc/inventory-overview-hoc.jsx';
+import { InventoryOverview } from './inventory-overview/inventory-overview.jsx';
 import { InventoryPageHOC } from './inventory-page-hoc/inventory-page-hoc.jsx';
 
 const ShopPage = ({ fetchInventoryStart, match }) => {
@@ -22,7 +22,7 @@ const ShopPage = ({ fetchInventoryStart, match }) => {
       <Route 
         exact 
         path={`${match.path}`} 
-        component={InventoryOverviewHOC}
+        component={InventoryOverview}
       />
       <Route
         path={`${match.path}/:categoryId`}
