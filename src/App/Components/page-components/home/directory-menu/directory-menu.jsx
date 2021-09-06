@@ -1,5 +1,3 @@
-// REACT
-import React from 'react';
 // REDUX
 import { connect } from 'react-redux';
 import { directorySectionSelector } from '../../../../Redux/reducers/directory/selectors/directorySelectors.js';

@@ -1,4 +1,4 @@
-// REACT
+// REACT HOOKS
 import { useEffect } from 'react';
 // REDUX
 import { connect } from 'react-redux';
