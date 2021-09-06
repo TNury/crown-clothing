@@ -1,15 +1,20 @@
 // REDUX
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { cartItemsSelector, cartTotalSelector } from '../../../Redux/reducers/cart/selectors/cartSelectors.js';
 // COMPONENTS
-import CheckOutItem from './checkout-item/checkout-item.jsx';
+import { CheckOutItem } from './checkout-item/checkout-item.jsx';
 import { StripeCheckoutButton } from './stripe-button/stripe-button.jsx';
 // STYLES
 import { checkoutPageStyles } from './checkout-page.styles.js';
 import { checkoutItemStyles } from './checkout-item/checkout-item.styles.js';
 
-const CheckoutPage = ({ reduxProps: { cartItemsProps, cartTotalProp } }) => {
+export const CheckoutPage = () => {
+
+  // HOOKS
+  const cartItemsProps = useSelector(cartItemsSelector);
+  const cartTotalProp = useSelector(cartTotalSelector);
   
+  // STYLES
   const { 
     checkoutPage,
     checkoutPage__head,
@@ -49,12 +54,3 @@ const CheckoutPage = ({ reduxProps: { cartItemsProps, cartTotalProp } }) => {
     </div>
   );
 };
-
-const mapStateToProps = (currentState) => ({
-  reduxProps: {
-    cartItemsProps: cartItemsSelector(currentState),
-    cartTotalProp: cartTotalSelector(currentState)
-  }
-});
-
-export default connect(mapStateToProps)(CheckoutPage);

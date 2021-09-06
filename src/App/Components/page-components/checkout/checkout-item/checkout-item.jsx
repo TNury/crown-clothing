@@ -1,13 +1,15 @@
 // REDUX
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addItem, removeItem, deleteItem } from '../../../../Redux/reducers/cart/actions/cartActions.js';
 // STYLES
 import { checkoutItemStyles } from './checkout-item.styles.js';
 
-const CheckOutItem = ({ drilledProps, reduxActions }) => {
+export const CheckOutItem = ({ drilledProps }) => {
 
-  const { id, imageUrl, name, quantity, price } = drilledProps;
-  const { addItem, removeItem, deleteItem } = reduxActions;
+  // HOOKS
+  const dispatch = useDispatch();
+
+  // STYLES
   const { 
     checkoutItem,
     checkoutItem__item,
@@ -20,6 +22,8 @@ const CheckOutItem = ({ drilledProps, reduxActions }) => {
     _remove
   } = checkoutItemStyles();
 
+  const { id, imageUrl, name, quantity, price } = drilledProps;
+
   return (
     <div className={checkoutItem}>
       <div className={`${checkoutItem__item} ${img_ctr}`}>
@@ -27,18 +31,24 @@ const CheckOutItem = ({ drilledProps, reduxActions }) => {
       </div>
       <span className={`${checkoutItem__item} ${_text}`}>{name}</span>
       <div className={`${checkoutItem__item} ${group}`}>
-        <span className={group__arrow} onClick={() => removeItem(drilledProps)}>
+        <span
+          className={group__arrow}
+          onClick={() => dispatch(removeItem(drilledProps))}
+        >
           &#10094;
         </span>
         <span className={group__text}>{quantity}</span>
-        <span onClick={() => addItem(drilledProps)} className={group__arrow}>
+        <span
+          onClick={() => dispatch(addItem(drilledProps))}
+          className={group__arrow}
+        >
           &#10095;
         </span>
       </div>
       <span className={`${checkoutItem__item} ${_text}`}>${price}</span>
       <div
         onClick={() => {
-          deleteItem(id);
+          dispatch(deleteItem(id));
         }}
         className={`${checkoutItem__item} ${_text} ${_remove}`}
       >
@@ -47,13 +57,3 @@ const CheckOutItem = ({ drilledProps, reduxActions }) => {
     </div>
   );
 };
-
-const mapDispatchToProps = (dispatch) => ({
-  reduxActions: {
-    addItem: (item) => dispatch(addItem(item)),
-    removeItem: (item) => dispatch(removeItem(item)),
-    deleteItem: (item) => dispatch(deleteItem(item))
-  }
-});
-
-export default connect(null, mapDispatchToProps)(CheckOutItem);
