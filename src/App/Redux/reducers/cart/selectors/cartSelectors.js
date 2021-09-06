@@ -2,7 +2,7 @@
 import { createSelector } from 'reselect';
 
 // CART REDUCER SELECTOR
-const cartSelector = (currentStore) => currentStore.cartReducer;
+const cartSelector = (currentState) => currentState.cartReducer;
 
 // CART ITEMS SELECTOR
 export const cartItemsSelector = createSelector(

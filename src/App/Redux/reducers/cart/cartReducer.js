@@ -7,43 +7,43 @@ import {
 // UTILITY FUNCTIONS
 import { addItemToCart, removeItemFromCart } from './utility/cartUtils.js';
 
-const INITIAL_STORE = {
+const INITIAL_STATE = {
   displayDropdown: false,
   cartItems: []
 };
 
 // REMINDER: EXPLORE MORE UTILITY FUNCTIONS
 
-export const cart = (currentStore = INITIAL_STORE, action) => {
+export const cart = (currentState = INITIAL_STATE, action) => {
   switch (action.type) {
     case TOGGLE_DROPDOWN:
       return {
-        ...currentStore,
-        displayDropdown: !currentStore.displayDropdown
+        ...currentState,
+        displayDropdown: !currentState.displayDropdown
       };
     case ADD_ITEM:
       return {
-        ...currentStore,
-        cartItems: addItemToCart(currentStore.cartItems, action.payload)
+        ...currentState,
+        cartItems: addItemToCart(currentState.cartItems, action.payload)
       };
     case REMOVE_ITEM:
       return {
-        ...currentStore,
-        cartItems: removeItemFromCart(currentStore.cartItems, action.payload)
+        ...currentState,
+        cartItems: removeItemFromCart(currentState.cartItems, action.payload)
       };
     case DELETE_ITEM:
       return {
-        ...currentStore,
-        cartItems: currentStore.cartItems.filter(
+        ...currentState,
+        cartItems: currentState.cartItems.filter(
           (cartItem) => cartItem.id !== action.payload
         )
       };
     case CLEAR_CART:
       return {
-        ...currentStore,
+        ...currentState,
         cartItems: []
       };
     default:
-      return currentStore;
+      return currentState;
   }
 };

@@ -7,22 +7,22 @@ import {
   SIGN_OUT_FAILURE
 } from '../../actions-types/actionTypes';
 
-const INITIAL_STORE = {
+const INITIAL_STATE = {
   user: null,
   error: null
 };
 
-export const user = (currentStore = INITIAL_STORE, action) => {
+export const user = (currentState = INITIAL_STATE, action) => {
   switch (action.type) {
     case SIGN_IN_SUCCESS:
       return {
-        ...currentStore,
+        ...currentState,
         user: action.payload,
         error: null
       };
     case SIGN_OUT_SUCCESS:
       return {
-        ...currentStore,
+        ...currentState,
         user: null,
         error: null
       };
@@ -30,10 +30,10 @@ export const user = (currentStore = INITIAL_STORE, action) => {
     case SIGN_UP_FAILURE:
     case SIGN_OUT_FAILURE:
       return {
-        ...currentStore,
+        ...currentState,
         error: action.payload
       };
     default:
-      return currentStore;
+      return currentState;
   }
 };

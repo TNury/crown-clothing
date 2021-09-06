@@ -5,32 +5,32 @@ import {
   FETCH_INVENTORY_FAILURE
 } from '../../actions-types/actionTypes.js';
 
-const INITIAL_STORE = {
+const INITIAL_STATE = {
   inventory: null,
   isFetching: false,
   errorMessage: undefined
 };
 
-export const inventory = (currentStore = INITIAL_STORE, action) => {
+export const inventory = (currentState = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_INVENTORY_START:
       return {
-        ...currentStore,
+        ...currentState,
         isFetching: true
       };
     case FETCH_INVENTORY_SUCCESS:
       return {
-        ...currentStore,
+        ...currentState,
         isFecthing: false,
         inventory: action.payload
       };
     case FETCH_INVENTORY_FAILURE:
       return {
-        ...currentStore,
+        ...currentState,
         isFecthing: false,
         errorMessage: action.payload
       };
     default:
-      return currentStore;
+      return currentState;
   }
 };

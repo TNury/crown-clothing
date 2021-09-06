@@ -4,7 +4,7 @@ import { createSelector } from 'reselect';
 import memoize from 'lodash.memoize';
 
 // INVENTORY REDUCER SELECTOR
-const inventorySelector = (currentStore) => currentStore.inventoryReducer;
+const inventorySelector = (currentState) => currentState.inventoryReducer;
 
 // INVENTORY ITEMS SELECTOR
 export const inventoryItemSelector = createSelector(

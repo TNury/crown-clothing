@@ -1,4 +1,4 @@
-const INITIAL_STORE = {
+const INITIAL_STATE = {
   sections: [
     {
       title: 'hats',
@@ -35,9 +35,9 @@ const INITIAL_STORE = {
   ]
 };
 
-export const directory = (currentStore = INITIAL_STORE, action) => {
+export const directory = (currentState = INITIAL_STATE, action) => {
   switch (action.type) {
     default:
-      return currentStore;
+      return currentState;
   }
 };
