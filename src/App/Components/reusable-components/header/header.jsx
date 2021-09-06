@@ -40,11 +40,11 @@ const Header = ({ reduxProps, dispatch }) => {
   );
 };
 
-const mapStoreToProps = (currentStore) => ({
+const mapStateToProps = (currentState) => ({
   reduxProps: {
-    userProps: currentUserSelector(currentStore),
-    displayDropdownProp: displayDropdownSelector(currentStore)
+    userProps: currentUserSelector(currentState),
+    displayDropdownProp: displayDropdownSelector(currentState)
   }
 });
 
-export default connect(mapStoreToProps)(Header);
+export default connect(mapStateToProps)(Header);

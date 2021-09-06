@@ -19,10 +19,10 @@ export const DirectoryMenu = ({ reduxProps: { directoryProps } }) => {
   );
 };
 
-const mapStoreToProps = (currentStore) => ({
+const mapStateToProps = (currentState) => ({
   reduxProps: {
-    directoryProps: directorySectionSelector(currentStore)
+    directoryProps: directorySectionSelector(currentState)
   }
 });
 
-export default connect(mapStoreToProps)(DirectoryMenu);
+export default connect(mapStateToProps)(DirectoryMenu);

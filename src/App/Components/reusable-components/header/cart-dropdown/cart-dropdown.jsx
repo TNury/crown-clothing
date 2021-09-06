@@ -51,10 +51,10 @@ export const CartDropdown = ({ reduxProps, history, dispatch }) => {
   );
 };
 
-const mapStoreToProps = (currentStore) => ({
+const mapStateToProps = (currentState) => ({
   reduxProps: {
-    cartItemsProps: cartItemsSelector(currentStore)
+    cartItemsProps: cartItemsSelector(currentState)
   }
 });
 
-export default withRouter(connect(mapStoreToProps)(CartDropdown));
+export default withRouter(connect(mapStateToProps)(CartDropdown));

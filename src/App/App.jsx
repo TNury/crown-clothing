@@ -46,9 +46,9 @@ const App = ({ reduxProps: { userProps }, checkUserSession }) => {
   );
 }
 
-const mapStoreToProps = (currentStore) => ({
+const mapStateToProps = (currentState) => ({
   reduxProps: {
-    userProps: currentUserSelector(currentStore)
+    userProps: currentUserSelector(currentState)
   }
 });
 
@@ -56,4 +56,4 @@ const mapDispatchToProps = (dispatch) => ({
   checkUserSession: () => dispatch(checkUserSession())
 });
 
-export default connect(mapStoreToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

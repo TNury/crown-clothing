@@ -20,10 +20,10 @@ const CartIcon = ({ reduxProps, dispatch }) => {
   );
 };
 
-const mapStoreToProps = (currentStore) => ({
+const mapStateToProps = (currentState) => ({
   reduxProps: {
-    itemCountProp: itemCountSelector(currentStore)
+    itemCountProp: itemCountSelector(currentState)
   }
 });
 
-export default connect(mapStoreToProps)(CartIcon);
+export default connect(mapStateToProps)(CartIcon);

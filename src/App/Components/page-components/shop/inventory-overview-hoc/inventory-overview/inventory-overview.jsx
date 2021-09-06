@@ -19,10 +19,10 @@ const InventoryOverview = ({ reduxProps: { inventoryItemProps } }) => {
   );
 };
 
-const mapStoreToProps = (currentStore) => ({
+const mapStateToProps = (currentState) => ({
   reduxProps: {
-    inventoryItemProps: inventoryPreviewSelector(currentStore)
+    inventoryItemProps: inventoryPreviewSelector(currentState)
   }
 });
 
-export default connect(mapStoreToProps)(InventoryOverview);
+export default connect(mapStateToProps)(InventoryOverview);

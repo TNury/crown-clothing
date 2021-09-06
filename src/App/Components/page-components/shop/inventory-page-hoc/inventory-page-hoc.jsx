@@ -8,14 +8,14 @@ import { WithSpinner } from '../../../reusable-components/with-spinner/withSpinn
 // COMPONENTS
 import InventoryPage from './inventory-page/inventory-page.jsx';
 
-const mapStoreToProps = (currentStore) => ({
-  isLoading: !isInventoryLoadedSelector(currentStore)
+const mapStateToProps = (currentState) => ({
+  isLoading: !isInventoryLoadedSelector(currentState)
 });
 
 export const InventoryPageHOC = compose(
-  connect(mapStoreToProps),
+  connect(mapStateToProps),
   WithSpinner
 )(InventoryPage);
 
 // THIS IS EQUIVALENT TO THIS:
-// export const InventoryOverviewContainer = connect(mapStoreToProps)(WithSpinner(InventoryOverview))
+// export const InventoryOverviewContainer = connect(mapStateToProps)(WithSpinner(InventoryOverview))

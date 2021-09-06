@@ -50,11 +50,11 @@ const CheckoutPage = ({ reduxProps: { cartItemsProps, cartTotalProp } }) => {
   );
 };
 
-const mapStoreToProps = (currentStore) => ({
+const mapStateToProps = (currentState) => ({
   reduxProps: {
-    cartItemsProps: cartItemsSelector(currentStore),
-    cartTotalProp: cartTotalSelector(currentStore)
+    cartItemsProps: cartItemsSelector(currentState),
+    cartTotalProp: cartTotalSelector(currentState)
   }
 });
 
-export default connect(mapStoreToProps)(CheckoutPage);
+export default connect(mapStateToProps)(CheckoutPage);

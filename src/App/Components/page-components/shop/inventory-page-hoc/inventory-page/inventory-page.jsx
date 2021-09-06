@@ -24,10 +24,10 @@ const InventoryPage = ({ reduxProps: { categoryProps } }) => {
   );
 };
 
-const mapStoreToProps = (currentStore, ownProps) => ({
+const mapStateToProps = (currentState, ownProps) => ({
   reduxProps: {
-    categoryProps: categorySelector(ownProps.match.params.categoryId)(currentStore)
+    categoryProps: categorySelector(ownProps.match.params.categoryId)(currentState)
   }
 });
 
-export default connect(mapStoreToProps)(InventoryPage);
+export default connect(mapStateToProps)(InventoryPage);
