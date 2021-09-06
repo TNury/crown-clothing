@@ -36,7 +36,8 @@ export const formInputStyles = createUseStyles({
   input: {
     "&[type='password']": {
       letterSpacing: '0.3em'
-    }
+    },
+    fontFamily: 'OpenSansCondensed'
   },
   formInputLabel: {
     color: '$sub-color',
