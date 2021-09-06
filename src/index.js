@@ -9,7 +9,7 @@ import { store, persistor } from './App/Redux/store/store.js';
 // REDUX-PERSIST
 import { PersistGate } from 'redux-persist/integration/react';
 // COMPONENTS
-import App from './App/App.jsx';
+import { App } from './App/App.jsx';
 // TESTING
 import reportWebVitals from './App/Test/reportWebVitals';
 

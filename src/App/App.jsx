@@ -1,7 +1,7 @@
 // REACT HOOKS
 import { useEffect } from 'react';
 // REDUX
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { currentUserSelector } from './Redux/reducers/user/selectors/userSelectors.js';
 import { checkUserSession } from './Redux/reducers/user/actions/userActions.js';
 // REACT-ROUTER
@@ -17,14 +17,18 @@ import Header from './Components/reusable-components/header/header.jsx';
 import { appStyles } from './App.styles.js';
 import './Assets/font/font.scss';
 
-const App = ({ reduxProps: { userProps }, checkUserSession }) => {
+export const App = () => {
 
-  // USE EFFECT
+  // HOOKS
+  const userProps = useSelector(currentUserSelector);
+  const dispatch = useDispatch();
+
+  // EFFECTS
   useEffect(() => {
 
-    checkUserSession();
+    dispatch(checkUserSession());
 
-  }, [checkUserSession]); 
+  }, [dispatch]);
 
   // STYLES
   const { app } = appStyles();
@@ -44,16 +48,4 @@ const App = ({ reduxProps: { userProps }, checkUserSession }) => {
       </Switch>
     </div>
   );
-}
-
-const mapStateToProps = (currentState) => ({
-  reduxProps: {
-    userProps: currentUserSelector(currentState)
-  }
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  checkUserSession: () => dispatch(checkUserSession())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+};
