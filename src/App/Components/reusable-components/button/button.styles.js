@@ -10,6 +10,7 @@ export const buttonStyles = createUseStyles({
     lineHeight: '50px',
     padding: '0 35px 0 35px',
     fontSize: '15px',
+    fontFamily: 'OpenSansCondensed',
     backgroundColor: 'black',
     color: 'white',
     textTransform: 'uppercase',
