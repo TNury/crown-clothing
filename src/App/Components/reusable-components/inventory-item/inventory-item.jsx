@@ -11,8 +11,6 @@ export const InventoryItem = ({ drilledProps }) => {
   // HOOKS
   const dispatch = useDispatch();
 
-  // STYLES
-  const { name, price, imageUrl } = drilledProps;
   const {
     collectionItem,
     image: imageStyles,
@@ -21,6 +19,9 @@ export const InventoryItem = ({ drilledProps }) => {
     name: nameStyles,
     price: priceStyles
   } = inventoryItemStyles();
+
+  // DRILLED PROPS
+  const { name, price, imageUrl } = drilledProps;
 
   return (
     <div className={collectionItem}>

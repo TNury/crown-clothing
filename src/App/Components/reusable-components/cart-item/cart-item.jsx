@@ -3,8 +3,11 @@ import { cartItemStyles } from './cart-item.styles.js';
 
 export const CartItem = ({ drilledProps }) => {
 
-  const { name, imageUrl, price, quantity } = drilledProps;
+  // HOOKS
   const { cartItem, img, itemDetails, name: nameStyles, price: priceStyles } = cartItemStyles();
+
+  // DRILLED PROPS
+  const { name, imageUrl, price, quantity } = drilledProps;
   
   return (
     <div className={cartItem}>

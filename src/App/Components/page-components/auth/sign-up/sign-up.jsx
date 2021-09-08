@@ -11,18 +11,15 @@ import { signUpPageStyles } from './sign-up.styles.js';
 
 const SignUp = ({ dispatch }) => {
 
-  // STATES
+  // HOOKS
   const [userCredentials, setCredentials] = useState({
     displayName: '',
     email: '',
     password: '',
     confirmPassword: ''
   });
-
-  // STATE VARIABLES
   const { displayName, email, password, confirmPassword } = userCredentials;
 
-  // STYLES
   const { signUp, title } = signUpPageStyles(); 
 
   // METHODS

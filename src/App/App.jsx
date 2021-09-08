@@ -21,7 +21,11 @@ export const App = () => {
 
   // HOOKS
   const userProps = useSelector(currentUserSelector);
+  
   const dispatch = useDispatch();
+
+  const { app } = appStyles();
+
 
   // EFFECTS
   useEffect(() => {
@@ -29,9 +33,6 @@ export const App = () => {
     dispatch(checkUserSession());
 
   }, [dispatch]);
-
-  // STYLES
-  const { app } = appStyles();
 
   return (
     <div className={app}>

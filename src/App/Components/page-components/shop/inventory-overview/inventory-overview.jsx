@@ -12,9 +12,9 @@ export const InventoryOverview = () => {
 
   // HOOKS
   const inventoryItemProps = useSelector(inventoryPreviewSelector);
+  
   const isLoading = useSelector(isInventoryFetchingSelector);
 
-  // STYLES
   const { collectionsOverview } = collectionsOverviewStyles();
 
   return (

@@ -11,9 +11,9 @@ export const CartIcon = () => {
 
   // HOOKS
   const itemCountProp = useSelector(itemCountSelector);
+  
   const dispatch = useDispatch();
 
-  // STYLES
   const { cartIcon, shoppingIcon, itemCount } = cartIconStyles();
 
   return (

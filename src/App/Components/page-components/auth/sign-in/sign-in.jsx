@@ -20,6 +20,8 @@ export const SignIn = () => {
 
   const dispatch = useDispatch();
 
+  const { signIn, title, buttons } = signInPageStyles();
+
   // METHODS
   const handleSubmit = async (event) => {
 
@@ -36,9 +38,6 @@ export const SignIn = () => {
     setCredentials({ ...userCredentials, [name]: value });
 
   };
-
-  // STYLES
-  const { signIn, title, buttons } = signInPageStyles();
 
   return (
     <div className={signIn}>

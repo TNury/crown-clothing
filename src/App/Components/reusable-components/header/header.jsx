@@ -17,10 +17,11 @@ const Header = () => {
 
   // HOOKS
   const userProps = useSelector(currentUserSelector);
+
   const displayDropdownProp = useSelector(displayDropdownSelector);
+
   const dispatch = useDispatch();
 
-  // STYLES
   const { header, logoContainer, options, option } = headerStyles();
 
   return (

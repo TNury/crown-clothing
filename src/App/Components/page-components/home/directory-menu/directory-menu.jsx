@@ -11,9 +11,7 @@ export const DirectoryMenu = () => {
   // HOOKS
   const directoryProps = useSelector(directorySectionSelector);
 
-  // STYLES
   const { directoryMenu } = directoryMenuStyles();
-
 
   return (
     <div className={directoryMenu}>

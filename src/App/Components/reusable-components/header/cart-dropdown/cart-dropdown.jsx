@@ -13,6 +13,8 @@ import { cartDropdownStyles } from './cart-dropdown.styles.js';
 export const CartDropdown = ({ reduxProps, history, dispatch }) => {
 
   const { cartItemsProps } = reduxProps;
+
+  // HOOKS
   const { 
     cartDropdown, 
     cartItems, 
