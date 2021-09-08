@@ -3,6 +3,7 @@ import { formInputStyles } from './form-input.styles.js';
 
 export const FormInput = ({ handler, labelText, ...restOfProps }) => {
 
+  // HOOKS
   const {
     group,
     formInput,

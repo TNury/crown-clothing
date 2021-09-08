@@ -3,7 +3,7 @@ import { useState } from 'react';
 // REDUX 
 import { useDispatch } from 'react-redux';
 import { googleSignInStart, emailSignInStart } from '../../../../Redux/reducers/user/actions/userActions.js';
-// REUSABLE COMPONENTS
+// COMPONENTS
 import { FormInput } from '../../../reusable-components/form-input/form-input.jsx';
 import { Button } from '../../../reusable-components/button/button';
 // STYLES
@@ -19,6 +19,8 @@ export const SignIn = () => {
   const { email, password } = userCredentials;
 
   const dispatch = useDispatch();
+
+  const { signIn, title, buttons } = signInPageStyles();
 
   // METHODS
   const handleSubmit = async (event) => {
@@ -36,9 +38,6 @@ export const SignIn = () => {
     setCredentials({ ...userCredentials, [name]: value });
 
   };
-
-  // STYLES
-  const { signIn, title, buttons } = signInPageStyles();
 
   return (
     <div className={signIn}>

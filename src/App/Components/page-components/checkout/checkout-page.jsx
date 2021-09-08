@@ -12,9 +12,9 @@ export const CheckoutPage = () => {
 
   // HOOKS
   const cartItemsProps = useSelector(cartItemsSelector);
+  
   const cartTotalProp = useSelector(cartTotalSelector);
   
-  // STYLES
   const { 
     checkoutPage,
     checkoutPage__head,

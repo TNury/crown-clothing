@@ -1,10 +1,10 @@
-// REACT-ROUTER
-import { Link } from 'react-router-dom';
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
 import { currentUserSelector } from '../../../Redux/reducers/user/selectors/userSelectors.js'; 
 import { displayDropdownSelector } from '../../../Redux/reducers/cart/selectors/cartSelectors';
 import { signOutStart } from '../../../Redux/reducers/user/actions/userActions.js';
+// REACT-ROUTER
+import { Link } from 'react-router-dom';
 // ICON
 import { ReactComponent as Logo } from '../../../Assets/icons/crown.svg';
 // COMPONENTS
@@ -17,10 +17,11 @@ const Header = () => {
 
   // HOOKS
   const userProps = useSelector(currentUserSelector);
+
   const displayDropdownProp = useSelector(displayDropdownSelector);
+
   const dispatch = useDispatch();
 
-  // STYLES
   const { header, logoContainer, options, option } = headerStyles();
 
   return (

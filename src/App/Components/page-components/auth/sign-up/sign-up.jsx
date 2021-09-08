@@ -3,7 +3,7 @@ import { useState } from 'react';
 // REDUX
 import { connect } from 'react-redux';
 import { signUpStart } from '../../../../Redux/reducers/user/actions/userActions.js';
-// REUSABLE COMPONENTS
+// COMPONENTS
 import { FormInput } from '../../../reusable-components/form-input/form-input.jsx';
 import { Button } from '../../../reusable-components/button/button.jsx';
 // STYLES
@@ -11,18 +11,15 @@ import { signUpPageStyles } from './sign-up.styles.js';
 
 const SignUp = ({ dispatch }) => {
 
-  // STATES
+  // HOOKS
   const [userCredentials, setCredentials] = useState({
     displayName: '',
     email: '',
     password: '',
     confirmPassword: ''
   });
-
-  // STATE VARIABLES
   const { displayName, email, password, confirmPassword } = userCredentials;
 
-  // STYLES
   const { signUp, title } = signUpPageStyles(); 
 
   // METHODS

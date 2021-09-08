@@ -6,6 +6,7 @@ import { authPageStyles } from './auth.styles.js';
 
 export const AuthPage = () => {
 
+  // HOOKS
   const { authPage } = authPageStyles();
 
   return (

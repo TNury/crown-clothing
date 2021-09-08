@@ -17,7 +17,6 @@ export const InventoryPage = ({ match }) => {
 
   const isLoading = !useSelector(isInventoryLoadedSelector);
 
-  // STYLES
   const { collectionPage, title, itemsContainer } = inventoryPageStyles();
 
   return (

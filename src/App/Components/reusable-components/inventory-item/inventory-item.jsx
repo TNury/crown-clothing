@@ -1,7 +1,7 @@
 // REDUX
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../../Redux/reducers/cart/actions/cartActions.js';
-// REUSABLE COMPONENTS
+// COMPONENTS
 import { Button } from '../button/button.jsx';
 // STYLES
 import { inventoryItemStyles } from './inventory-item.styles.js';
@@ -11,8 +11,6 @@ export const InventoryItem = ({ drilledProps }) => {
   // HOOKS
   const dispatch = useDispatch();
 
-  // STYLES
-  const { name, price, imageUrl } = drilledProps;
   const {
     collectionItem,
     image: imageStyles,
@@ -21,6 +19,9 @@ export const InventoryItem = ({ drilledProps }) => {
     name: nameStyles,
     price: priceStyles
   } = inventoryItemStyles();
+
+  // DRILLED PROPS
+  const { name, price, imageUrl } = drilledProps;
 
   return (
     <div className={collectionItem}>

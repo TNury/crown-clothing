@@ -9,7 +9,6 @@ export const CheckOutItem = ({ drilledProps }) => {
   // HOOKS
   const dispatch = useDispatch();
 
-  // STYLES
   const { 
     checkoutItem,
     checkoutItem__item,
@@ -22,6 +21,7 @@ export const CheckOutItem = ({ drilledProps }) => {
     _remove
   } = checkoutItemStyles();
 
+  // DRILLED PROPS
   const { id, imageUrl, name, quantity, price } = drilledProps;
 
   return (

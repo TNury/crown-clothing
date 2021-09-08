@@ -5,8 +5,7 @@ import { menuItemStyles } from './menu-item.styles.js';
 
 const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => {
   
-  const imageSize = size === '_large' ? '380px' : '240px';
-
+  // HOOKS
   const { 
     menuItem, 
     backgroundImage, 
@@ -14,6 +13,8 @@ const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => {
     title: titleStyles, 
     subtitle 
   } = menuItemStyles({size: imageSize});
+
+  const imageSize = size === '_large' ? '380px' : '240px';
 
   return (
     <div

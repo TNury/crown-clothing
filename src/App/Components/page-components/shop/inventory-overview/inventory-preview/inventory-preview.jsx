@@ -5,6 +5,7 @@ import { collectionPreviewStyles } from './inventory-preview.styles.js';
 
 export const InventoryPreview = ({ title, items }) => {
 
+  // HOOKS
   const { collectionPreview, title: titleHead, preview } = collectionPreviewStyles();
   
   return (
