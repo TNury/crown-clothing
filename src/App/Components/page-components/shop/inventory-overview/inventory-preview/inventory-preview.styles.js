@@ -1,4 +1,4 @@
-// JSS STYLES HOOK
+// JSS HOOK
 import { createUseStyles } from 'react-jss';
 
 export const collectionPreviewStyles = createUseStyles({
