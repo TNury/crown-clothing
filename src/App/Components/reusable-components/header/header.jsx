@@ -1,15 +1,15 @@
-// REACT-ROUTER
-import { Link } from 'react-router-dom';
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
 import { currentUserSelector } from '../../../Redux/reducers/user/selectors/userSelectors.js'; 
 import { displayDropdownSelector } from '../../../Redux/reducers/cart/selectors/cartSelectors';
 import { signOutStart } from '../../../Redux/reducers/user/actions/userActions.js';
+// REACT-ROUTER
+import { Link } from 'react-router-dom';
 // ICON
 import { ReactComponent as Logo } from '../../../Assets/icons/crown.svg';
 // COMPONENTS
 import { CartIcon } from './cart-icon/cart-icon.jsx';
-import CartDropdown from './cart-dropdown/cart-dropdown.jsx';
+import { CartDropdown } from './cart-dropdown/cart-dropdown.jsx';
 // STYLES
 import { headerStyles } from './header.styles.js';
 

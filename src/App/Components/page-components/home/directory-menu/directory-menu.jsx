@@ -2,7 +2,7 @@
 import { useSelector } from 'react-redux';
 import { directorySectionSelector } from '../../../../Redux/reducers/directory/selectors/directorySelectors.js';
 // COMPONENTS
-import MenuItem from './menu-item/menu-item.jsx';
+import { MenuItem } from './menu-item/menu-item.jsx';
 // STYLES
 import { directoryMenuStyles } from './directory-menu.styles.js';
 
