@@ -2,6 +2,8 @@
 import { useSelector } from 'react-redux';
 import { categorySelector } from '../../../../Redux/reducers/inventory/selectors/inventorySelectors.js';
 import { isInventoryLoadedSelector } from '../../../../Redux/reducers/inventory/selectors/inventorySelectors.js';
+// REACT ROUTER
+import { useParams } from 'react-router';
 // COMPONENTS
 import { Spinner } from '../../../reusable-components/spinner/spinner.jsx';
 import { InventoryItem } from '../../../reusable-components/inventory-item/inventory-item.jsx';
@@ -9,10 +11,12 @@ import { InventoryItem } from '../../../reusable-components/inventory-item/inven
 import { inventoryPageStyles } from './inventory-page.styles.js';
 
 // This is technically the Category page
-export const InventoryPage = ({ match }) => {
+export const InventoryPage = () => {
 
   // HOOKS
-  const categoryProps = useSelector(categorySelector(match.params.categoryId));
+  const { categoryId } = useParams();
+
+  const categoryProps = useSelector(categorySelector(categoryId));
   const { title: category, items } = categoryProps;
 
   const isLoading = !useSelector(isInventoryLoadedSelector);
