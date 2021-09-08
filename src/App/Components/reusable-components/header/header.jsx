@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../../Assets/icons/crown.svg';
 // COMPONENTS
 import { CartIcon } from './cart-icon/cart-icon.jsx';
-import CartDropdown from './cart-dropdown/cart-dropdown.jsx';
+import { CartDropdown } from './cart-dropdown/cart-dropdown.jsx';
 // STYLES
 import { headerStyles } from './header.styles.js';
 
