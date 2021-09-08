@@ -3,7 +3,7 @@ import { useState } from 'react';
 // REDUX 
 import { useDispatch } from 'react-redux';
 import { googleSignInStart, emailSignInStart } from '../../../../Redux/reducers/user/actions/userActions.js';
-// REUSABLE COMPONENTS
+// COMPONENTS
 import { FormInput } from '../../../reusable-components/form-input/form-input.jsx';
 import { Button } from '../../../reusable-components/button/button';
 // STYLES

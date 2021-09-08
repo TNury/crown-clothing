@@ -1,20 +1,24 @@
 // REDUX
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { cartItemsSelector } from '../../../../Redux/reducers/cart/selectors/cartSelectors.js';
 import { toggleDropdown } from '../../../../Redux/reducers/cart/actions/cartActions.js';
 // REACT ROUTER
-import { withRouter } from 'react-router';
-// REUSABLE COMPONENTS
+import { useHistory } from 'react-router';
+// COMPONENTS
 import { CartItem } from '../../cart-item/cart-item.jsx';
 import { Button } from '../../button/button.jsx';
 // STYLES
 import { cartDropdownStyles } from './cart-dropdown.styles.js';
 
-export const CartDropdown = ({ reduxProps, history, dispatch }) => {
-
-  const { cartItemsProps } = reduxProps;
+export const CartDropdown = () => {
 
   // HOOKS
+  const cartItemsProps = useSelector(cartItemsSelector);
+
+  const dispatch = useDispatch();
+
+  const history = useHistory();
+
   const { 
     cartDropdown, 
     cartItems, 
@@ -52,11 +56,3 @@ export const CartDropdown = ({ reduxProps, history, dispatch }) => {
     </div>
   );
 };
-
-const mapStateToProps = (currentState) => ({
-  reduxProps: {
-    cartItemsProps: cartItemsSelector(currentState)
-  }
-});
-
-export default withRouter(connect(mapStateToProps)(CartDropdown));

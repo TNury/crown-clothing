@@ -1,11 +1,16 @@
 // REACT-ROUTER
-import { withRouter } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 // STYLES
 import { menuItemStyles } from './menu-item.styles.js';
 
-const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => {
+export const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
+
+  const imageSize = size === '_large' ? '380px' : '240px';
   
   // HOOKS
+  const match = useRouteMatch();
+  const history = useHistory();
+
   const { 
     menuItem, 
     backgroundImage, 
@@ -13,8 +18,6 @@ const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => {
     title: titleStyles, 
     subtitle 
   } = menuItemStyles({size: imageSize});
-
-  const imageSize = size === '_large' ? '380px' : '240px';
 
   return (
     <div
@@ -34,5 +37,3 @@ const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => {
     </div>
   );
 };
-
-export default withRouter(MenuItem);

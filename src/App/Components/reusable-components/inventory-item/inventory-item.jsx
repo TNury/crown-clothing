@@ -1,7 +1,7 @@
 // REDUX
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../../Redux/reducers/cart/actions/cartActions.js';
-// REUSABLE COMPONENTS
+// COMPONENTS
 import { Button } from '../button/button.jsx';
 // STYLES
 import { inventoryItemStyles } from './inventory-item.styles.js';
