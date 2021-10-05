@@ -4,7 +4,7 @@ import SignUp from './sign-up/sign-up.jsx';
 // STYLES
 import { authPageStyles } from './auth.styles.js';
 
-export const AuthPage = () => {
+const AuthPage = () => {
 
   // HOOKS
   const { authPage } = authPageStyles();
@@ -16,3 +16,5 @@ export const AuthPage = () => {
     </div>
   );
 };
+
+export default AuthPage;

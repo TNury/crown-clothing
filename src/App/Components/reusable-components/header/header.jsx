@@ -13,7 +13,7 @@ import { CartDropdown } from './cart-dropdown/cart-dropdown.jsx';
 // STYLES
 import { headerStyles } from './header.styles.js';
 
-const Header = () => {
+export const Header = () => {
 
   // HOOKS
   const userProps = useSelector(currentUserSelector);
@@ -45,6 +45,3 @@ const Header = () => {
     </header>
   );
 };
-
-
-export default Header;

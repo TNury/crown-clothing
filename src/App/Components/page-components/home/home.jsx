@@ -3,7 +3,7 @@ import { DirectoryMenu } from './directory-menu/directory-menu.jsx';
 // STYLES
 import { homePageStyles } from './home.styles.js';
 
-export const HomePage = () => {
+const HomePage = () => {
 
   // HOOKS
   const { homepage } = homePageStyles();
@@ -14,3 +14,5 @@ export const HomePage = () => {
     </div> 
   );
 };
+
+export default HomePage;

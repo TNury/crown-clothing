@@ -9,7 +9,7 @@ import { fetchInventoryStart } from '../../../Redux/reducers/inventory/actions/i
 import { InventoryOverview } from './inventory-overview/inventory-overview.jsx';
 import { InventoryPage } from './inventory-page/inventory-page.jsx';
 
-export const ShopPage = ({ match }) => {
+const ShopPage = ({ match }) => {
 
   // HOOKS
   const dispatch = useDispatch();
@@ -27,3 +27,5 @@ export const ShopPage = ({ match }) => {
     </div>
   );
 };
+
+export default ShopPage;

@@ -8,7 +8,7 @@ import { StripeCheckoutButton } from './stripe-button/stripe-button.jsx';
 import { checkoutPageStyles } from './checkout-page.styles.js';
 import { checkoutItemStyles } from './checkout-item/checkout-item.styles.js';
 
-export const CheckoutPage = () => {
+const CheckoutPage = () => {
 
   // HOOKS
   const cartItemsProps = useSelector(cartItemsSelector);
@@ -54,3 +54,5 @@ export const CheckoutPage = () => {
     </div>
   );
 };
+
+export default CheckoutPage;
