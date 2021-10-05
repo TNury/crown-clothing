@@ -1,4 +1,4 @@
-// REACT HOOKS
+// REACT
 import { useEffect, lazy, Suspense } from 'react';
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';

@@ -1,4 +1,4 @@
-// REACT HOOKS
+// REACT
 import { useEffect } from 'react';
 // REACT ROUTER
 import { Route } from 'react-router-dom';

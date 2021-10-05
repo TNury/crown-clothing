@@ -8,7 +8,7 @@ import { Spinner } from '../../../reusable-components/spinner/spinner.jsx';
 // STYLES
 import { collectionsOverviewStyles } from './inventory-overview.styles.js';
 
-export const InventoryOverview = () => {
+const InventoryOverview = () => {
 
   // HOOKS
   const inventoryItemProps = useSelector(inventoryPreviewSelector);
@@ -31,3 +31,5 @@ export const InventoryOverview = () => {
     </div>
   );
 };
+
+export default InventoryOverview;

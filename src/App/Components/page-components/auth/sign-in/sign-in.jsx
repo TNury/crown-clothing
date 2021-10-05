@@ -1,4 +1,4 @@
-// REACT HOOKS
+// REACT
 import { useState } from 'react';
 // REDUX 
 import { useDispatch } from 'react-redux';

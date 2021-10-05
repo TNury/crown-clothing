@@ -11,7 +11,7 @@ import { InventoryItem } from '../../../reusable-components/inventory-item/inven
 import { inventoryPageStyles } from './inventory-page.styles.js';
 
 // This is technically the Category page
-export const InventoryPage = () => {
+const InventoryPage = () => {
 
   // HOOKS
   const { categoryId } = useParams();
@@ -42,3 +42,5 @@ export const InventoryPage = () => {
     </div>
   );
 };
+
+export default InventoryPage;
