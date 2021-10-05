@@ -12,6 +12,8 @@ import { Spinner } from './Components/reusable-components/spinner/spinner.jsx';
 // STYLES
 import { appStyles } from './App.styles.js';
 import './Assets/font/font.scss';
+// COMPONENTS
+import { ErrorBoundary } from './Components/reusable-components/error-boundary/error-boundary.jsx';
 // PAGE COMPONENTS WITH LAZY
 const HomePage = lazy(() => import('./Components/page-components/home/home'));
 const ShopPage = lazy(() => import('./Components/page-components/shop/shop.jsx'));
@@ -38,16 +40,18 @@ export const App = () => {
     <div className={app}>
       <Header />
       <Switch>
-        <Suspense fallback={<Spinner />}>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/shop" component={ShopPage} />
-          <Route path="/checkout" component={CheckoutPage} />
-          <Route
-            exact
-            path="/auth"
-            render={() => (userProps ? <Redirect to="/" /> : <AuthPage />)}
-          />
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<Spinner />}>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/shop" component={ShopPage} />
+            <Route path="/checkout" component={CheckoutPage} />
+            <Route
+              exact
+              path="/auth"
+              render={() => (userProps ? <Redirect to="/" /> : <AuthPage />)}
+            />
+          </Suspense>
+        </ErrorBoundary>
       </Switch>
     </div>
   );

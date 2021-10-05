@@ -1,4 +1,4 @@
-// STYLE CREATOR FUNCTION
+// JSS HOOK
 import { createUseStyles } from 'react-jss';
 
 export const signUpPageStyles = createUseStyles({
