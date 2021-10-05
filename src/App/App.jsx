@@ -1,5 +1,5 @@
 // REACT
-import { useEffect, lazy, Suspense } from 'react';
+import { useEffect, Suspense, lazy } from 'react';
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
 import { currentUserSelector } from './Redux/reducers/user/selectors/userSelectors.js';
@@ -40,7 +40,7 @@ export const App = () => {
       <Switch>
         <Suspense fallback={<Spinner />}>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/shop" component={ShopPage} />
+          <Route path="/shop" component={ShopPage} />
           <Route path="/checkout" component={CheckoutPage} />
           <Route
             exact

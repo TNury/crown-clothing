@@ -1,13 +1,15 @@
 // REACT
-import { useEffect } from 'react';
+import { useEffect, Suspense, lazy } from 'react';
 // REACT ROUTER
 import { Route } from 'react-router-dom';
 // REDUX
 import { useDispatch } from 'react-redux';
 import { fetchInventoryStart } from '../../../Redux/reducers/inventory/actions/inventoryActions.js';
 // COMPONENTS
-import { InventoryOverview } from './inventory-overview/inventory-overview.jsx';
-import { InventoryPage } from './inventory-page/inventory-page.jsx';
+import { Spinner } from '../../reusable-components/spinner/spinner.jsx';
+// COMPONENTS WITH LAZY
+const InventoryOverview = lazy(() => import('./inventory-overview/inventory-overview.jsx'));
+const InventoryPage = lazy(() => import('./inventory-page/inventory-page.jsx'));
 
 const ShopPage = ({ match }) => {
 
@@ -22,8 +24,10 @@ const ShopPage = ({ match }) => {
 
   return (
     <div className="shop-page">
-      <Route exact path={`${match.path}`} component={InventoryOverview} />
-      <Route path={`${match.path}/:categoryId`} component={InventoryPage} />
+      <Suspense fallback={<Spinner />}>
+        <Route exact path={`${match.path}`} component={InventoryOverview} />
+        <Route path={`${match.path}/:categoryId`} component={InventoryPage} />
+      </Suspense>
     </div>
   );
 };
