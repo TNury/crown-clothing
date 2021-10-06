@@ -1,7 +1,9 @@
+// REACT
+import { memo } from 'react';
 // STYLES
 import { cartItemStyles } from './cart-item.styles.js';
 
-export const CartItem = ({ drilledProps }) => {
+const CartItem = ({ drilledProps }) => {
 
   // HOOKS
   const { cartItem, img, itemDetails, name: nameStyles, price: priceStyles } = cartItemStyles();
@@ -21,3 +23,5 @@ export const CartItem = ({ drilledProps }) => {
     </div>
   );
 };
+
+export default memo(CartItem);

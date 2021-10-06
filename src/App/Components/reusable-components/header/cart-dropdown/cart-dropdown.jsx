@@ -5,7 +5,7 @@ import { toggleDropdown } from '../../../../Redux/reducers/cart/actions/cartActi
 // REACT ROUTER
 import { useHistory } from 'react-router';
 // COMPONENTS
-import { CartItem } from '../../cart-item/cart-item.jsx';
+import CartItem from '../../cart-item/cart-item.jsx';
 import { Button } from '../../button/button.jsx';
 // STYLES
 import { cartDropdownStyles } from './cart-dropdown.styles.js';
