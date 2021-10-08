@@ -1,8 +1,8 @@
 // ENZYME
-import './setupTests.js';
+import '../setupTests.js';
 import { shallow } from 'enzyme';
 // COMPONENTS
-import CartItem from '../Components/reusable-components/cart-item/cart-item.jsx';
+import CartItem from '../../Components/reusable-components/cart-item/cart-item.jsx';
 
 describe('<CartItem />', () => {
 
