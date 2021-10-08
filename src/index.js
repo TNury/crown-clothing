@@ -11,7 +11,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 // COMPONENTS
 import { App } from './App/App.jsx';
 // TESTING
-import reportWebVitals from './App/Test/reportWebVitals';
+import reportWebVitals from './App/Tests/reportWebVitals';
 
 ReactDOM.render(
   <Provider store={store}>

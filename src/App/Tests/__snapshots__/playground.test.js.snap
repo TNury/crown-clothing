@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CartItem /> is a reusable component that renders cart items 1`] = `
+<div
+  className="cartItem-0-2-1"
+  id="cartItem"
+>
+  <img
+    alt="item"
+    className="img-0-2-2"
+    src="https://something.com"
+  />
+  <div
+    className="itemDetails-0-2-3"
+  >
+    <span
+      className="name-0-2-4"
+      id="nameProp"
+    >
+      Green Beenie
+    </span>
+    <span
+      className="price-0-2-5"
+    >
+      1
+       x $
+      95
+    </span>
+  </div>
+</div>
+`;

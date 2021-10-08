@@ -12,10 +12,10 @@ const CartItem = ({ drilledProps }) => {
   const { name, imageUrl, price, quantity } = drilledProps;
   
   return (
-    <div className={cartItem}>
+    <div id="cartItem" className={cartItem}>
       <img className={img} src={imageUrl} alt="item" />
       <div className={itemDetails}>
-        <span className={nameStyles}>{name} </span>
+        <span id="nameProp" className={nameStyles}>{name}</span>
         <span className={priceStyles}>
           {quantity} x ${price}
         </span>
